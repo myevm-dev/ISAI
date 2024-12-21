@@ -9,17 +9,16 @@ const AboutSection = ({ id }: { id: string }) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="font-display text-4xl text-neonPink mb-6">
+          <h2 className="font-display text-5xl text-neonPink mb-6">
             Together, We Will Shape the Future.
           </h2>
 
           <p className="text-gray-200 mb-8">
-            We are a cutting-edge NFT marketplace that brings together artists and collectors
-            in a seamless digital experience. Our platform showcases unique digital artworks
-            across various categories, from stunning illustrations to mesmerizing 3D creations.
+            This is our moment—a time when two world-defining technologies, blockchain and AI, converge to reshape our future. Together, we stand at the forefront of innovation, bridging creativity and technology like never before. Join us to be pioneers in this revolution, where unique digital ownership and groundbreaking AI experiences come to life.
           </p>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ scale: 1.05 }}
