@@ -125,9 +125,9 @@ const Index = () => {
               className="relative z-10"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
-                Your Onchain <br />
-                AI Assistant NFT <br />
-                <span style={{ color: "#263b7f" }}>on ApeChain</span>
+                Your Onchain NFT <br />
+                AI Assistant  <br />
+              
               </h1>
               <button className="btn-primary">Coming Soon</button>
             </motion.div>
