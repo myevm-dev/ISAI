@@ -11,7 +11,7 @@ const AboutSection = ({ id }: { id: string }) => {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="font-display text-4xl mb-6">About Crypterio</h2>
+          <h2 className="font-display text-4xl mb-6">Feed It Data You Care About</h2>
           <p className="text-gray-400 mb-8">
             We are a cutting-edge NFT marketplace that brings together artists and collectors
             in a seamless digital experience. Our platform showcases unique digital artworks
@@ -22,22 +22,22 @@ const AboutSection = ({ id }: { id: string }) => {
               whileHover={{ scale: 1.05 }}
               className="p-6 bg-darkBg rounded-xl"
             >
-              <h3 className="font-display text-2xl mb-2">Innovation</h3>
-              <p className="text-gray-400">Pushing the boundaries of digital art and ownership</p>
+              <h3 className="font-display text-2xl mb-2">Automation</h3>
+              <p className="text-gray-400">Pushing the Boundaries of Digital Art and Web3 Ownership</p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="p-6 bg-darkBg rounded-xl"
             >
-              <h3 className="font-display text-2xl mb-2">Community</h3>
-              <p className="text-gray-400">Building connections between creators and collectors</p>
+              <h3 className="font-display text-2xl mb-2">Companionship</h3>
+              <p className="text-gray-400">Grow, Learn, and Evolve with your Customizable Ai Character.</p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="p-6 bg-darkBg rounded-xl"
             >
-              <h3 className="font-display text-2xl mb-2">Security</h3>
-              <p className="text-gray-400">Ensuring safe and transparent transactions</p>
+              <h3 className="font-display text-2xl mb-2">Creativity</h3>
+              <p className="text-gray-400">Unlock infinite potential to build one-of-a-kind experiences.</p>
             </motion.div>
           </div>
         </motion.div>

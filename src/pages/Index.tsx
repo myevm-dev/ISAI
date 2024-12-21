@@ -95,10 +95,10 @@ const Index = () => {
               className="relative z-10"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
-                Extraordinary<br />
-                rare digital NFT
+                Your onchain<br />
+                AI assistant.
               </h1>
-              <p className="text-gray-400 mb-8">by <span className="text-neonGreen">Matt Gardner</span></p>
+              <p className="text-gray-400 mb-8">by <span className="text-neonGreen">MyEVM</span></p>
               <button onClick={scrollToArtworks} className="btn-primary">VIEW MORE</button>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-16">
@@ -218,10 +218,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <ContactSection id="contact" />
-      </Suspense>
+
 
       <Footer />
     </div>
