@@ -19,9 +19,10 @@ export default {
     },
     extend: {
       colors: {
-        neonGreen: "#C4FF50",
+        neonGreen: "#00fafa",
         darkBg: "#0A0A0A",
         cardBg: "#151515",
+        neonPink: "#eb24f1", // Added new color
       },
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],

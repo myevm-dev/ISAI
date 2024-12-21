@@ -9,9 +9,11 @@ const Footer = () => {
           {/* ISAI NFT Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-neonGreen"></div>
-              </div>
+              <img
+                src="/isailogo.png"
+                alt="ISAI NFT Logo"
+                className="w-8 h-8"
+              />
               <span className="font-display text-xl">ISAI NFT</span>
             </Link>
             <p className="text-gray-400">Contributing to AI16Z's Eliza Framework</p>
