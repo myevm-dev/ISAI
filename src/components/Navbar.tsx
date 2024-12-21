@@ -27,8 +27,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <button onClick={() => scrollToSection('about')} className="nav-link">ABOUT</button>
           <button onClick={() => scrollToSection('artworks')} className="nav-link">ARTWORKS</button>
-          <button onClick={() => scrollToSection('contact')} className="nav-link">CONTACT</button>
-          <button className="btn-primary">SHOP NFT</button>
+          <button className="btn-primary">SHOP</button>
         </div>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>

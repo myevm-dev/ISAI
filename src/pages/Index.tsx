@@ -95,8 +95,8 @@ const Index = () => {
               className="relative z-10"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
-                Your onchain<br />
-                AI assistant.
+                Your Onchain<br />
+                NFT AI Assistant
               </h1>
               <p className="text-gray-400 mb-8">by <span className="text-neonGreen">MyEVM</span></p>
               <button onClick={scrollToArtworks} className="btn-primary">VIEW MORE</button>
