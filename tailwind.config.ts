@@ -23,6 +23,7 @@ export default {
         darkBg: "#0A0A0A",
         cardBg: "#151515",
         neonPink: "#eb24f1", // Added new color
+        apeBlue: "#0085ef",
       },
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],

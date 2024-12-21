@@ -7,15 +7,18 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start">
           {/* ISAI NFT Section */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-center space-x-2">
               <img
                 src="/isailogo.png"
                 alt="ISAI NFT Logo"
                 className="w-8 h-8"
               />
               <span className="font-display text-xl">ISAI NFT</span>
-            </Link>
+              <p className="text-gray-400 inline">
+                by <span className="text-neonPink">MyEVM</span>
+              </p>
+            </div>
             <p className="text-gray-400">Contributing to AI16Z's Eliza Framework</p>
           </div>
 
@@ -32,7 +35,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white"
                   >
-                    About
+                    Team
                   </a>
                 </li>
               </ul>

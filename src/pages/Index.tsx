@@ -12,49 +12,49 @@ const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 
 const initialArtworks = [
   {
-    image: "https://images.unsplash.com/photo-1634986666676-ec8fd927c23d",
-    title: "Frames of Mind",
+    image: "/agent1.png",
+    title: "Agent1",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-    title: "Form of Time",
+    image: "/agent2.png",
+    title: "Agent2",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
-    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e",
-    title: "Quantum Chains",
+    image: "/agent3.png",
+    title: "Agent3",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
-    image: "https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5",
-    title: "Techno Angel",
+    image: "/agent4.png",
+    title: "Agent4",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    image: "/tensorflowlogo.png",
     title: "Tensor Flow",
     price: { ape: 5, usd: null },
     category: "SKILLS",
   },
   {
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    image: "/xlogo.png",
     title: "X",
     price: { ape: 5, usd: null },
     category: "PLUGINS",
   },
   {
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    image: "/discordlogo.png",
     title: "Discord",
     price: { ape: 5, usd: null },
     category: "PLUGINS",
   },
   {
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: "/personality.png",
     title: "Moggish Cook",
     price: { ape: 5, usd: null },
     category: "PERSONALITIES",
@@ -126,11 +126,9 @@ const Index = () => {
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
                 Your Onchain <br />
-                NFT AI Assistant
+                AI Assistant NFT <br />
+                <span style={{ color: "#263b7f" }}>on ApeChain</span>
               </h1>
-              <p className="text-gray-400 mb-8">
-                by <span className="text-neonPink">MyEVM</span>
-              </p>
               <button className="btn-primary">Coming Soon</button>
             </motion.div>
 
