@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Twitter, Github } from 'lucide-react';
+import { TwitterIcon, GithubIcon } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -47,7 +47,7 @@ const Footer = () => {
                   className="hover:text-neonGreen transition-colors"
                   aria-label="Twitter"
                 >
-                  <Twitter className="h-6 w-6" />
+                  <TwitterIcon className="h-6 w-6" />
                 </a>
                 <a
                   href="https://github.com/myevm-dev"
@@ -56,7 +56,7 @@ const Footer = () => {
                   className="hover:text-neonGreen transition-colors"
                   aria-label="Github"
                 >
-                  <Github className="h-6 w-6" />
+                  <GithubIcon className="h-6 w-6" />
                 </a>
               </div>
             </div>
