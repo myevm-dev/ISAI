@@ -34,7 +34,7 @@ const NFTCard = ({ image, title, category, price, description }: NFTCardProps) =
           <p className="text-sm text-gray-400 mb-2">{category}</p>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-neonGreen">{price.eth} eth</span>
+              <span className="text-neonGreen">{price.eth} APE</span>
               <span className="text-sm text-gray-400">${price.usd}</span>
             </div>
             <button onClick={() => setIsModalOpen(true)} className="btn-secondary text-sm">VIEW</button>

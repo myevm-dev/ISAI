@@ -23,21 +23,21 @@ const AboutSection = ({ id }: { id: string }) => {
               className="p-6 bg-darkBg rounded-xl"
             >
               <h3 className="font-display text-2xl mb-2">Automation</h3>
-              <p className="text-gray-400">Pushing the Boundaries of Digital Art and Web3 Ownership.</p>
+              <p className="text-gray-400">Pushing Boundries with Web3 Strategy Plugins and Digital Ownership.</p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="p-6 bg-darkBg rounded-xl"
             >
               <h3 className="font-display text-2xl mb-2">Companionship</h3>
-              <p className="text-gray-400">Grow, Learn, and Evolve With Your Customizable AI Character.</p>
+              <p className="text-gray-400">Learn and Evolve With Your Customizable AI Agent Personalites.</p>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="p-6 bg-darkBg rounded-xl"
             >
               <h3 className="font-display text-2xl mb-2">Creativity</h3>
-              <p className="text-gray-400">Unlock Infinite Potential to Build One-of-a-Kind Experiences.</p>
+              <p className="text-gray-400">Unlock Infinite Potential to Build Your Own Unique Experiences.</p>
             </motion.div>
           </div>
         </motion.div>

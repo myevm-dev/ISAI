@@ -99,7 +99,7 @@ const Index = () => {
                 NFT AI Assistant
               </h1>
               <p className="text-gray-400 mb-8">by <span className="text-neonGreen">MyEVM</span></p>
-              <button onClick={scrollToArtworks} className="btn-primary">VIEW MORE</button>
+              <button onClick={scrollToArtworks} className="btn-primary">Coming Soon</button>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-16">
                 <motion.div

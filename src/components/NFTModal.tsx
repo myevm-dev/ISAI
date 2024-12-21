@@ -52,11 +52,11 @@ const NFTModal = ({ isOpen, onClose, nft }: NFTModalProps) => {
             <div>
               <h3 className="text-lg font-semibold mb-2">Price</h3>
               <div className="flex items-center space-x-4">
-                <span className="text-neonGreen text-2xl">{nft.price.eth} ETH</span>
+                <span className="text-neonGreen text-2xl">{nft.price.eth} APE</span>
                 <span className="text-gray-400">${nft.price.usd}</span>
               </div>
             </div>
-            <button className="btn-primary w-full mt-6">Purchase Now</button>
+            <button className="btn-primary w-full mt-6">Coming Soon</button>
           </div>
         </div>
       </DialogContent>
