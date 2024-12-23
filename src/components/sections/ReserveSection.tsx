@@ -16,7 +16,7 @@ const ReserveSection = ({ id }: { id: string }) => {
           </h2>
 
           <p className="text-gray-200 mb-8">
-            Reserve your spot to mint by holding a tradable whitelist NFT to ensure your spot and get involved instantly.<br/> These are ERC1155 NFTs and will always be tradeable on a bonding curve.
+            Reserve your spot to mint by holding a tradable whitelist NFT to ensure your chance and get involved instantly.<br/> These are ERC1155 NFTs and will always be tradeable on a bonding curve.
           </p>
         </motion.div>
       </div>
