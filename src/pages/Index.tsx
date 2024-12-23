@@ -15,7 +15,7 @@ const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 const initialArtworks = [
   {
     image: "/agent1.png",
-    title: "Agent1",
+    title: "ISAI Agent1",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
@@ -27,37 +27,37 @@ const initialArtworks = [
   },
   {
     image: "/agent3.png",
-    title: "Agent3",
+    title: "ISAI Agent3",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent4.png",
-    title: "Agent4",
+    title: "ISAI Agent4",
     price: { ape: 12, usd: null },
     category: "AGENTS",
   },
   {
     image: "/tensorflowlogo.png",
-    title: "Tensor Flow",
+    title: "Tensor Flow Skill",
     price: { ape: 5, usd: null },
     category: "SKILLS",
   },
   {
     image: "/xlogo.png",
-    title: "X",
+    title: "X Plugin",
     price: { ape: 5, usd: null },
     category: "PLUGINS",
   },
   {
     image: "/discordlogo.png",
-    title: "Discord",
+    title: "Discord Plugin",
     price: { ape: 5, usd: null },
     category: "PLUGINS",
   },
   {
     image: "/personality.png",
-    title: "Moggish Cook",
+    title: "Moggish Cook ",
     price: { ape: 5, usd: null },
     category: "PERSONALITIES",
   },

@@ -12,11 +12,11 @@ const ReserveSection = ({ id }: { id: string }) => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-display text-5xl text-neonPink mb-6">
-            Reserve a Spot to Mint Shortly
+            Reserve a Spot to Mint
           </h2>
 
           <p className="text-gray-200 mb-8">
-            By reserving an agent you get to hold a tradable whitelist NFT to ensure your spot and get involved instantly.
+            Reserve your spot to mint by holding a tradable whitelist NFT to ensure your spot and get involved instantly.<br/> These are ERC1155 NFTs and will always be tradeable on a bonding curve.
           </p>
         </motion.div>
       </div>
