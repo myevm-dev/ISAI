@@ -1,11 +1,26 @@
-.roadmap {
+.roadmap-section {
+    padding: 40px 20px;
+    background-color: #121212; /* Optional background color */
+    text-align: center;
+  }
+  
+  .roadmap-section-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .roadmap {
     display: flex;
-    justify-content: space-evenly; /* Space out items evenly */
+    justify-content: space-evenly;
     align-items: center;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 20px;
-    gap: 40px; /* Adjust spacing between steps */
-    max-width: 1400px; /* Increase max width for spacing */
+    gap: 40px;
+    max-width: 1400px;
   }
   
   .roadmap-step {
@@ -18,8 +33,8 @@
   }
   
   .roadmap-line {
-    width: 40px; /* Increase circle size */
-    height: 40px; /* Increase circle size */
+    width: 40px;
+    height: 40px;
     background: linear-gradient(135deg, #ff00ff, #00f);
     margin-bottom: 15px;
     border-radius: 50%;
@@ -30,7 +45,7 @@
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;
-    text-align: center; /* Ensure the text aligns properly */
+    text-align: center;
   }
   
   .roadmap-title:hover {
@@ -40,7 +55,7 @@
   @media (max-width: 768px) {
     .roadmap {
       flex-direction: column;
-      gap: 20px; /* Reduce gap for smaller screens */
+      gap: 20px;
     }
   
     .roadmap-step {
@@ -48,12 +63,12 @@
     }
   
     .roadmap-line {
-      width: 30px; /* Slightly smaller circles on mobile */
+      width: 30px;
       height: 30px;
     }
   
     .roadmap-title {
-      font-size: 16px; /* Adjust text size for mobile */
+      font-size: 16px;
     }
   }
   

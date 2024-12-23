@@ -11,14 +11,17 @@ const Roadmap: React.FC = () => {
   ];
 
   return (
-    <div className="roadmap">
-      {steps.map((title, index) => (
-        <div className="roadmap-step" key={index}>
-          <div className="roadmap-line"></div>
-          <span className="roadmap-title">{title}</span>
-        </div>
-      ))}
-    </div>
+    <section className="roadmap-section">
+      <h2 className="roadmap-section-title">Our Roadmap</h2>
+      <div className="roadmap">
+        {steps.map((title, index) => (
+          <div className="roadmap-step" key={index}>
+            <div className="roadmap-line"></div>
+            <span className="roadmap-title">{title}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
