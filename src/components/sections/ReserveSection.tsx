@@ -12,7 +12,7 @@ const ReserveSection = ({ id }: { id: string }) => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-display text-5xl text-neonPink mb-6">
-            Reserve your Agent Today
+            Reserve a Spot to Mint Shortly
           </h2>
 
           <p className="text-gray-200 mb-8">
