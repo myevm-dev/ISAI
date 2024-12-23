@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 // Lazy load components
 const NFTCard = lazy(() => import('../components/NFTCard'));
 const AboutSection = lazy(() => import('../components/sections/AboutSection'));
+const ReserveSection = lazy(() => import('../components/sections/ReserveSection'));
 
 const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 
@@ -126,10 +127,19 @@ const Index = () => {
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
                 Your Onchain NFT <br />
-                AI Assistant               
+                AI Assistant
               </h1>
-              <button className="btn-primary">Reserve Soon</button>
+              <button
+                className="btn-primary"
+                onClick={() => {
+                  const reserveSection = document.getElementById("reserve");
+                  reserveSection?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Reserve
+              </button>
             </motion.div>
+
 
             {/* Hero Image */}
             <motion.div
@@ -152,6 +162,12 @@ const Index = () => {
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <AboutSection id="about" />
       </Suspense>
+
+            {/* Reserve Section */}
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+        <ReserveSection id="reserve" />
+      </Suspense>
+
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">

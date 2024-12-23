@@ -23,7 +23,7 @@ const Navbar = () => {
             alt="ISAI NFT Logo"
             className="w-8 h-8 rounded-full"
           />
-          <span className="font-display text-3xl">ISAI NFT</span>
+          <span className="font-display text-3xl">MyEVM ISAI</span>
         </Link>
         
         <div className="hidden md:flex items-center space-x-8">
