@@ -175,7 +175,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="font-display text-4xl text-neonPink mb-12"
           >
-            Assets Coming Soon
+            Assets Soon
           </motion.h2>
 
           {/* Categories */}
