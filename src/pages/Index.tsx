@@ -1,14 +1,16 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import axios from 'axios';
-import Navbar from '../components/Navbar';
-import { motion, AnimatePresence } from 'framer-motion';
-import Footer from '../components/Footer';
-import Roadmap from '@/components/sections/Roadmap';
+import { useState, useEffect, lazy, Suspense } from "react";
+import axios from "axios";
+import Navbar from "../components/Navbar";
+import { motion, AnimatePresence } from "framer-motion";
+import Footer from "../components/Footer";
+import Roadmap from "@/components/sections/Roadmap";
 
 // Lazy load components
-const NFTCard = lazy(() => import('../components/NFTCard'));
-const AboutSection = lazy(() => import('../components/sections/AboutSection'));
-const ReserveSection = lazy(() => import('../components/sections/ReserveSection'));
+const NFTCard = lazy(() => import("../components/NFTCard"));
+const AboutSection = lazy(() => import("../components/sections/AboutSection"));
+const ReserveSection = lazy(() =>
+  import("../components/sections/ReserveSection")
+);
 
 const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 
@@ -63,12 +65,12 @@ const initialArtworks = [
   },
 ];
 
+
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [artworks, setArtworks] = useState(initialArtworks);
   const [apePrice, setApePrice] = useState<number | null>(null);
 
-  // Fetch the current ApeCoin price in USD from Coingecko
   useEffect(() => {
     const fetchApePrice = async () => {
       try {
@@ -84,7 +86,7 @@ const Index = () => {
             ...artwork,
             price: {
               ...artwork.price,
-              usd: (artwork.price.ape * price).toFixed(2), // Calculate USD price
+              usd: (artwork.price.ape * price).toFixed(2),
             },
           }))
         );
@@ -100,11 +102,6 @@ const Index = () => {
     selectedCategory === "ALL"
       ? artworks
       : artworks.filter((art) => art.category === selectedCategory);
-
-  const scrollToArtworks = () => {
-    const artworksSection = document.getElementById("artworks");
-    artworksSection?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <div className="min-h-screen">
@@ -141,7 +138,6 @@ const Index = () => {
               </button>
             </motion.div>
 
-
             {/* Hero Image */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -164,11 +160,10 @@ const Index = () => {
         <AboutSection id="about" />
       </Suspense>
 
-            {/* Reserve Section */}
+      {/* Reserve Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <ReserveSection id="reserve" />
       </Suspense>
-
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">
@@ -237,7 +232,11 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-      <Roadmap />
+
+      {/* Roadmap Section */}
+      <section id="roadmap" className="py-20 px-4">
+        <Roadmap />
+      </section>
 
       <Footer />
     </div>
