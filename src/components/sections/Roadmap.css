@@ -1,0 +1,59 @@
+.roadmap {
+    display: flex;
+    justify-content: space-evenly; /* Space out items evenly */
+    align-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    gap: 40px; /* Adjust spacing between steps */
+    max-width: 1400px; /* Increase max width for spacing */
+  }
+  
+  .roadmap-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  .roadmap-line {
+    width: 40px; /* Increase circle size */
+    height: 40px; /* Increase circle size */
+    background: linear-gradient(135deg, #ff00ff, #00f);
+    margin-bottom: 15px;
+    border-radius: 50%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .roadmap-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center; /* Ensure the text aligns properly */
+  }
+  
+  .roadmap-title:hover {
+    color: #ff00ff;
+  }
+  
+  @media (max-width: 768px) {
+    .roadmap {
+      flex-direction: column;
+      gap: 20px; /* Reduce gap for smaller screens */
+    }
+  
+    .roadmap-step {
+      flex: none;
+    }
+  
+    .roadmap-line {
+      width: 30px; /* Slightly smaller circles on mobile */
+      height: 30px;
+    }
+  
+    .roadmap-title {
+      font-size: 16px; /* Adjust text size for mobile */
+    }
+  }
+  

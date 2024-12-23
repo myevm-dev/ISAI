@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '../components/Footer';
+import Roadmap from '@/components/sections/Roadmap';
 
 // Lazy load components
 const NFTCard = lazy(() => import('../components/NFTCard'));
@@ -236,6 +237,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+      <Roadmap />
 
       <Footer />
     </div>
