@@ -128,7 +128,7 @@ const Index = () => {
                 Your Onchain NFT <br />
                 AI Assistant               
               </h1>
-              <button className="btn-primary">Coming Soon</button>
+              <button className="btn-primary">Reserve Soon</button>
             </motion.div>
 
             {/* Hero Image */}
