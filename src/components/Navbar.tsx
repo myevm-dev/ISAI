@@ -49,8 +49,8 @@ const Navbar = () => {
           >
             ROADMAP
           </button>
-          <a href="https://myevm.casa" className="btn-primary" target="_blank" rel="noopener noreferrer">
-            DAPPS
+          <a href="https://myevm.vip" className="btn-primary" target="_blank" rel="noopener noreferrer">
+            VIP
           </a>
         </div>
 
@@ -87,12 +87,12 @@ const Navbar = () => {
                   ROADMAP
                 </button>
                 <a
-                  href="https://myevm.casa"
+                  href="https://myevm.vip"
                   className="btn-primary w-full text-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  DAPPS
+                  VIP
                 </a>
               </div>
             </div>

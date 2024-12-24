@@ -16,7 +16,7 @@ const ReserveSection = ({ id }: { id: string }) => {
           </h2>
 
           <p className="text-gray-200 mb-8">
-            Reserve your spot to mint by holding a tradable whitelist NFT to ensure your chance and get involved instantly.
+            Reserve your spot to mint by holding a tradable whitelist NFT and get involved instantly.
           </p>
         </motion.div>
       </div>
