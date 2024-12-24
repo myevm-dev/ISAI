@@ -49,7 +49,9 @@ const Navbar = () => {
           >
             ROADMAP
           </button>
-          <button className="btn-primary">APP SOON</button>
+          <a href="https://myevm.casa" className="btn-primary" target="_blank" rel="noopener noreferrer">
+            DAPPS
+          </a>
         </div>
 
         {/* Mobile Navigation */}
@@ -84,7 +86,14 @@ const Navbar = () => {
                 >
                   ROADMAP
                 </button>
-                <button className="btn-primary w-full">SHOP NFT</button>
+                <a
+                  href="https://myevm.casa"
+                  className="btn-primary w-full text-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  DAPPS
+                </a>
               </div>
             </div>
           </SheetContent>
