@@ -41,45 +41,52 @@ const ReserveSection = ({
       alert("Please connect your wallet to proceed.");
       return;
     }
-
+  
     if (totalReserved + selectedCount > 800) {
       alert("Reservation limit reached. Please select fewer spots.");
       return;
     }
-
+  
     setLoading(true);
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-
+  
       const amount = ethers.parseEther((selectedCount * 1).toString()); // 1 APE per spot
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
       });
-
+  
       await tx.wait();
-
+  
       const updatedWhitelist = whitelist.map((entry) =>
         entry.address === walletAddress
           ? { ...entry, count: entry.count + selectedCount }
           : entry
       );
-
+  
       if (!whitelist.some((entry) => entry.address === walletAddress)) {
         updatedWhitelist.push({ address: walletAddress, count: selectedCount });
       }
-
+  
       setWhitelist(updatedWhitelist);
       setTotalReserved((prevTotal) => prevTotal + selectedCount);
-
+  
       // Update Firestore
       await updateWhitelist(walletAddress, selectedCount);
-
+  
       alert("Reservation successful!");
     } catch (error: any) {
       console.error("Transaction failed:", error);
-      alert(error.reason || error.message || "Transaction failed. Please try again.");
+  
+      if (error.code === "INSUFFICIENT_FUNDS") {
+        alert("You do not have enough funds to reserve this many spots. Please check your balance.");
+      } else if (error.code === "CALL_EXCEPTION") {
+        alert("INSUFFICIENT_FUNDS. Please ensure you have enough funds or try again later.");
+      } else {
+        alert(error.reason || error.message || "Transaction failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
