@@ -1,8 +1,3 @@
-# NFT Landing Page
-
-## Project info
-
-**URL**: https://lovable.dev/projects/793c3386-4026-465e-bcd8-fcb87bfa1c20
 
 ## How can I edit this code?
 

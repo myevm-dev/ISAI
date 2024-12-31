@@ -18,49 +18,49 @@ const initialArtworks = [
   {
     image: "/agent1.png",
     title: "ISAI Agent1",
-    price: { ape: 12, usd: null },
+    price: { ape: 16, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent2.png",
     title: "Agent2",
-    price: { ape: 12, usd: null },
+    price: { ape: 16, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent3.png",
     title: "ISAI Agent3",
-    price: { ape: 12, usd: null },
+    price: { ape: 16, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent4.png",
     title: "ISAI Agent4",
-    price: { ape: 12, usd: null },
+    price: { ape: 16, usd: null },
     category: "AGENTS",
   },
   {
     image: "/tensorflowlogo.png",
     title: "Tensor Flow Skill",
-    price: { ape: 5, usd: null },
+    price: { ape: 6, usd: null },
     category: "SKILLS",
   },
   {
     image: "/xlogo.png",
     title: "X Plugin",
-    price: { ape: 5, usd: null },
+    price: { ape: 6, usd: null },
     category: "PLUGINS",
   },
   {
     image: "/discordlogo.png",
     title: "Discord Plugin",
-    price: { ape: 5, usd: null },
+    price: { ape: 6, usd: null },
     category: "PLUGINS",
   },
   {
     image: "/personality.png",
     title: "Moggish Cook ",
-    price: { ape: 5, usd: null },
+    price: { ape: 6, usd: null },
     category: "PERSONALITIES",
   },
 ];
@@ -127,6 +127,18 @@ const Index = () => {
                 Your Onchain NFT <br />
                 AI Assistant
               </h1>
+              
+              <h2
+                className="font-display text-2xl sm:text-3xl md:text-4xl leading-tight mb-4"
+                style={{
+                  color: "#CC6CE7", // Neon color
+                  textShadow: "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
+                }}
+              >
+                Max Supply 800 Agents
+              </h2>
+            
+
               <button
                 className="btn-primary"
                 onClick={() => {
@@ -137,6 +149,7 @@ const Index = () => {
                 Reserve
               </button>
             </motion.div>
+
 
             {/* Hero Image */}
             <motion.div
@@ -175,7 +188,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="font-display text-4xl text-neonPink mb-12"
           >
-            Assets Soon
+            Assets
           </motion.h2>
 
           {/* Categories */}

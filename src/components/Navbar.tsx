@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { ethers } from "ethers";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -12,6 +14,24 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
+  };
+
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed. Please install it to connect.");
+      return;
+    }
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_requestAccounts", []);
+      setWalletAddress(accounts[0]);
+    } catch (error) {
+      console.error("Failed to connect wallet:", error);
+    }
+  };
+
+  const disconnectWallet = () => {
+    setWalletAddress(null);
   };
 
   return (
@@ -49,9 +69,15 @@ const Navbar = () => {
           >
             ROADMAP
           </button>
-          <a href="https://myevm.vip" className="btn-primary" target="_blank" rel="noopener noreferrer">
-            VIP
-          </a>
+          {walletAddress ? (
+            <button onClick={disconnectWallet} className="btn-primary">
+              Disconnect
+            </button>
+          ) : (
+            <button onClick={connectWallet} className="btn-primary">
+              Connect Wallet
+            </button>
+          )}
         </div>
 
         {/* Mobile Navigation */}
@@ -86,14 +112,21 @@ const Navbar = () => {
                 >
                   ROADMAP
                 </button>
-                <a
-                  href="https://myevm.vip"
-                  className="btn-primary w-full text-center"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  VIP
-                </a>
+                {walletAddress ? (
+                  <button
+                    onClick={disconnectWallet}
+                    className="btn-primary w-full text-center"
+                  >
+                    Disconnect
+                  </button>
+                ) : (
+                  <button
+                    onClick={connectWallet}
+                    className="btn-primary w-full text-center"
+                  >
+                    Connect Wallet
+                  </button>
+                )}
               </div>
             </div>
           </SheetContent>
