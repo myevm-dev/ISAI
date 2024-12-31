@@ -65,8 +65,13 @@ const initialArtworks = [
   },
 ];
 
-
-const Index = () => {
+const Index = ({
+  walletAddress,
+  setWalletAddress,
+}: {
+  walletAddress: string | null;
+  setWalletAddress: (address: string | null) => void;
+}) => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [artworks, setArtworks] = useState(initialArtworks);
   const [apePrice, setApePrice] = useState<number | null>(null);
@@ -105,7 +110,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      {/* Pass walletAddress and setWalletAddress to Navbar */}
+      <Navbar walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
 
       {/* Hero Section */}
       <motion.section
@@ -124,20 +130,20 @@ const Index = () => {
               className="relative z-10"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
-                Your Onchain NFT <br />
-                AI Assistant
+                Your Onchain <br />
+                NFT AI Assistant
               </h1>
-              
+
               <h2
                 className="font-display text-2xl sm:text-3xl md:text-4xl leading-tight mb-4"
                 style={{
                   color: "#CC6CE7", // Neon color
-                  textShadow: "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
+                  textShadow:
+                    "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                Max Supply 800 Agents
+                Max 800 Agents on ApeChain
               </h2>
-            
 
               <button
                 className="btn-primary"
@@ -149,7 +155,6 @@ const Index = () => {
                 Reserve
               </button>
             </motion.div>
-
 
             {/* Hero Image */}
             <motion.div
@@ -175,8 +180,13 @@ const Index = () => {
 
       {/* Reserve Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <ReserveSection id="reserve" />
+        <ReserveSection
+          id="reserve"
+          walletAddress={walletAddress}
+          recipientAddress="0xC0DE00EE457D8117474286C1eD313F194aC20263" // Replace with your actual recipient address
+        />
       </Suspense>
+
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">

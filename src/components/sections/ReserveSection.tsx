@@ -2,65 +2,79 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ethers } from "ethers";
 
-const ReserveSection = ({ id }: { id: string }) => {
-  const [selectedCount, setSelectedCount] = useState<number>(1); // Default to 1
-  const [whitelist, setWhitelist] = useState<{ address: string; count: number }[]>([]); // Whitelist data
-  const [totalReserved, setTotalReserved] = useState<number>(0); // Total reserved spots
-  const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
+interface ReserveSectionProps {
+  id: string;
+  walletAddress: string | null;
+  recipientAddress: string;
+}
+
+const ReserveSection = ({
+  id,
+  walletAddress,
+  recipientAddress,
+}: ReserveSectionProps) => {
+  const [selectedCount, setSelectedCount] = useState<number>(1);
+  const [whitelist, setWhitelist] = useState<{ address: string; count: number }[]>([]);
+  const [totalReserved, setTotalReserved] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(false); // For accordion
 
   const handleReserve = async () => {
-    if (!window.ethereum) {
-      alert("MetaMask is not installed. Please install it to proceed.");
+    if (!walletAddress) {
+      alert("Please connect your wallet to proceed.");
       return;
     }
 
+    if (totalReserved + selectedCount > 800) {
+      alert("Reservation limit reached. Please select fewer spots.");
+      return;
+    }
+
+    setLoading(true);
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      const address = await signer.getAddress();
 
-      // Check if the wallet is connected
-      setIsWalletConnected(true);
-
-      // Send APE tokens to the dev wallet
-      const apeTokenAddress = "0xYourApeTokenContractAddress"; // Replace with the actual APE token contract address
-      const abi = [
-        "function transfer(address to, uint256 amount) public returns (bool)",
-      ];
-      const apeContract = new ethers.Contract(apeTokenAddress, abi, signer);
-
-      const amount = ethers.parseUnits((selectedCount * 1).toString(), 18); // APE has 18 decimals
-      const tx = await apeContract.transfer(
-        "0xC0DE00EE457D8117474286C1eD313F194aC20263",
-        amount
-      );
+      const amount = ethers.parseEther((selectedCount * 1).toString()); // 1 APE per spot
+      const tx = await signer.sendTransaction({
+        to: recipientAddress,
+        value: amount,
+      });
 
       await tx.wait();
 
       // Update whitelist and total reserved
       setWhitelist((prevWhitelist) => {
         const existingEntry = prevWhitelist.find(
-          (entry) => entry.address === address
+          (entry) => entry.address === walletAddress
         );
         if (existingEntry) {
           return prevWhitelist.map((entry) =>
-            entry.address === address
+            entry.address === walletAddress
               ? { ...entry, count: entry.count + selectedCount }
               : entry
           );
         } else {
-          return [...prevWhitelist, { address, count: selectedCount }];
+          return [...prevWhitelist, { address: walletAddress, count: selectedCount }];
         }
       });
 
       setTotalReserved((prevTotal) => prevTotal + selectedCount);
 
       alert("Reservation successful!");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Transaction failed:", error);
-      alert("Transaction failed. Please try again.");
+      const message =
+        error.reason || error.message || "Transaction failed. Please try again.";
+      alert(message);
+    } finally {
+      setLoading(false);
     }
   };
+
+  const toggleExpanded = () => setExpanded((prev) => !prev);
+
+  const displayedReservations = expanded ? whitelist : whitelist.slice(-10);
 
   return (
     <section className="py-20 px-4 bg-cardBg/50" id={id}>
@@ -77,11 +91,12 @@ const ReserveSection = ({ id }: { id: string }) => {
           </h2>
 
           <p className="text-gray-200 mb-2">
-            Reserve your Guaranteed Whitelist Spot by Putting Down a 1 APE
-            Deposit. Max 10 per wallet.
+            Reserve your Guaranteed Whitelist Spot by Sending 1 APE per Spot.
+            Max 10 per wallet.
           </p>
           <p className="text-gray-200 mb-8">
-            Total spots available: 800. Each NFT will recieve a Personality Airdrop on next Milestone.
+            Total spots available: <strong>{800 - totalReserved}</strong>. Each NFT will
+            receive a Personality Airdrop on next Milestone.
           </p>
 
           {/* Number Selector */}
@@ -110,18 +125,16 @@ const ReserveSection = ({ id }: { id: string }) => {
           {/* Pay Button */}
           <button
             className={`btn-primary ${
-              totalReserved >= 800 ? "opacity-50 cursor-not-allowed" : ""
+              totalReserved >= 800 || loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
-            onClick={() => {
-              if (!isWalletConnected) {
-                alert("Please connect your wallet to proceed.");
-                return;
-              }
-              handleReserve();
-            }}
-            disabled={totalReserved >= 800}
+            onClick={handleReserve}
+            disabled={totalReserved >= 800 || loading}
           >
-            {totalReserved >= 800 ? "Full" : `Pay ${selectedCount} APE`}
+            {loading
+              ? "Processing..."
+              : totalReserved >= 800
+              ? "Full"
+              : `Pay ${selectedCount} APE`}
           </button>
 
           {/* Whitelist Display */}
@@ -130,16 +143,26 @@ const ReserveSection = ({ id }: { id: string }) => {
               Whitelist Reservations
             </h3>
             <ul className="text-gray-200">
-              {whitelist.length > 0 ? (
-                whitelist.map((entry, index) => (
+              {displayedReservations.length > 0 ? (
+                displayedReservations.map((entry, index) => (
                   <li key={index} className="mb-2">
-                    {entry.address} reserved {entry.count} spots
+                    {entry.address} reserved {entry.count} NFTs
                   </li>
                 ))
               ) : (
                 <li>No reservations yet.</li>
               )}
             </ul>
+
+            {/* Accordion Toggle */}
+            {whitelist.length > 10 && (
+              <button
+                className="mt-4 btn-secondary"
+                onClick={toggleExpanded}
+              >
+                {expanded ? "Show Less" : "Show All"}
+              </button>
+            )}
           </div>
         </motion.div>
       </div>
