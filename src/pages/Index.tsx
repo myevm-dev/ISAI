@@ -23,7 +23,7 @@ const initialArtworks = [
   },
   {
     image: "/agent2.png",
-    title: "Agent2",
+    title: "ISAI Agent2",
     price: { ape: 16, usd: null },
     category: "AGENTS",
   },

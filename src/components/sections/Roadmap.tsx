@@ -13,7 +13,7 @@ const Roadmap: React.FC = () => {
     },
     {
       title: "Social App Plugins",
-      subtext: "Agent Dashboard",
+      subtext: "Agent Studio",
     },
     {
       title: "Minable Rewards",
