@@ -103,16 +103,18 @@ const ReserveSection = ({
             Reserve your Whitelist Minting Position
           </h2>
 
-          <p className="text-gray-200 mb-2">
+          <p className="text-neonCyan text-xl mb-2" style={{ color: '#00fafa' }}>
             Agent Cost: 16 APE. Max 10 per Wallet
           </p>
+
           <p className="text-gray-200 mb-8">
             Secure your whitelist spot with a 1 APE down payment and only pay 15 on mint day.
           </p>
-          <p className="text-gray-200 mb-2">
-            Total spots available: <strong>{800 - totalReserved}</strong>.
+          <p className="text-gray-200 mb-4">
+            Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
           </p>
-        
+
+                  
 
           {/* Number Selector */}
           <div className="mb-6">
@@ -147,10 +149,10 @@ const ReserveSection = ({
               : `Pay ${selectedCount} APE`}
           </button>
 
-          <p className="text-gray-200 mb-8 mt-8">
-             Each NFT will
-            receive a Personality Airdrop on next Milestone.
+          <p className="text-cyan-400 mb-8 mt-8">
+            Each NFT will receive a Personality Airdrop on next Milestone.
           </p>
+
 
           {/* Whitelist Display */}
           <div className="mt-10">
