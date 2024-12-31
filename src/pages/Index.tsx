@@ -198,7 +198,7 @@ const Index = ({
             viewport={{ once: true }}
             className="font-display text-4xl text-neonPink mb-12"
           >
-            Assets
+            NFT Assets
           </motion.h2>
 
           {/* Categories */}
