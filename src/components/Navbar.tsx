@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { ethers } from "ethers";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (address: string | null) => void; walletAddress: string | null }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
@@ -12,6 +13,25 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
+  };
+
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed. Please install it to connect.");
+      return;
+    }
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_requestAccounts", []);
+      setWalletAddress(accounts[0]);
+    } catch (error) {
+      console.error("Failed to connect wallet:", error);
+      alert("Failed to connect wallet. Please try again.");
+    }
+  };
+
+  const disconnectWallet = () => {
+    setWalletAddress(null);
   };
 
   return (
@@ -31,27 +51,24 @@ const Navbar = () => {
           <button onClick={() => scrollToSection("about")} className="nav-link">
             ABOUT
           </button>
-          <button
-            onClick={() => scrollToSection("reserve")}
-            className="nav-link"
-          >
+          <button onClick={() => scrollToSection("reserve")} className="nav-link">
             RESERVE
           </button>
-          <button
-            onClick={() => scrollToSection("artworks")}
-            className="nav-link"
-          >
+          <button onClick={() => scrollToSection("artworks")} className="nav-link">
             ASSETS
           </button>
-          <button
-            onClick={() => scrollToSection("roadmap")}
-            className="nav-link"
-          >
+          <button onClick={() => scrollToSection("roadmap")} className="nav-link">
             ROADMAP
           </button>
-          <a href="https://myevm.vip" className="btn-primary" target="_blank" rel="noopener noreferrer">
-            VIP
-          </a>
+          {walletAddress ? (
+            <button onClick={disconnectWallet} className="btn-primary">
+              Disconnect
+            </button>
+          ) : (
+            <button onClick={connectWallet} className="btn-primary">
+              Connect Wallet
+            </button>
+          )}
         </div>
 
         {/* Mobile Navigation */}
@@ -62,38 +79,27 @@ const Navbar = () => {
           <SheetContent side="right" className="bg-cardBg border-gray-800 p-0">
             <div className="flex flex-col h-full">
               <div className="p-6 flex flex-col space-y-6">
-                <button
-                  onClick={() => scrollToSection("about")}
-                  className="nav-link text-left text-lg"
-                >
+                <button onClick={() => scrollToSection("about")} className="nav-link text-left text-lg">
                   ABOUT
                 </button>
-                <button
-                  onClick={() => scrollToSection("reserve")}
-                  className="nav-link text-left text-lg"
-                >
+                <button onClick={() => scrollToSection("reserve")} className="nav-link text-left text-lg">
                   RESERVE
                 </button>
-                <button
-                  onClick={() => scrollToSection("artworks")}
-                  className="nav-link text-left text-lg"
-                >
+                <button onClick={() => scrollToSection("artworks")} className="nav-link text-left text-lg">
                   ASSETS
                 </button>
-                <button
-                  onClick={() => scrollToSection("roadmap")}
-                  className="nav-link text-left text-lg"
-                >
+                <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
                   ROADMAP
                 </button>
-                <a
-                  href="https://myevm.vip"
-                  className="btn-primary w-full text-center"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  VIP
-                </a>
+                {walletAddress ? (
+                  <button onClick={disconnectWallet} className="btn-primary w-full text-center">
+                    Disconnect
+                  </button>
+                ) : (
+                  <button onClick={connectWallet} className="btn-primary w-full text-center">
+                    Connect Wallet
+                  </button>
+                )}
               </div>
             </div>
           </SheetContent>
