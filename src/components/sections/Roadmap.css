@@ -71,4 +71,17 @@
       font-size: 16px;
     }
   }
+  .fundraised-container {
+    margin-top: 120px;
+    margin-right: 20px;
+    text-align: center;
+  }
+  
+  .fundraised-image {
+    width: 100%; /* Reduce the size to 50% of its original width */
+    max-width: 80%;
+    height: auto;
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Horizontally center the image */
+  }
   

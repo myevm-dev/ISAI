@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import { fetchWhitelist, updateWhitelist } from "./firebaseService";
 
 interface ReserveSectionProps {
   id: string;
   walletAddress: string | null;
   recipientAddress: string;
 }
-
-const LOCAL_STORAGE_KEY = "reservationWhitelist";
 
 const ReserveSection = ({
   id,
@@ -19,24 +18,23 @@ const ReserveSection = ({
   const [whitelist, setWhitelist] = useState<{ address: string; count: number }[]>([]);
   const [totalReserved, setTotalReserved] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [expanded, setExpanded] = useState<boolean>(false); // For accordion
+  const [expanded, setExpanded] = useState<boolean>(false);
 
-  // Load whitelist from localStorage on mount
+  // Fetch whitelist from Firebase on mount
   useEffect(() => {
-    const savedWhitelist = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedWhitelist) {
-      const parsedWhitelist = JSON.parse(savedWhitelist);
-      setWhitelist(parsedWhitelist);
-      setTotalReserved(
-        parsedWhitelist.reduce((total: number, entry: { count: number }) => total + entry.count, 0)
-      );
-    }
+    const loadWhitelist = async () => {
+      try {
+        const fetchedWhitelist = await fetchWhitelist();
+        setWhitelist(fetchedWhitelist);
+        setTotalReserved(
+          fetchedWhitelist.reduce((total, entry) => total + entry.count, 0)
+        );
+      } catch (error) {
+        console.error("Failed to load whitelist:", error);
+      }
+    };
+    loadWhitelist();
   }, []);
-
-  // Save whitelist to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(whitelist));
-  }, [whitelist]);
 
   const handleReserve = async () => {
     if (!walletAddress) {
@@ -62,30 +60,26 @@ const ReserveSection = ({
 
       await tx.wait();
 
-      // Update whitelist and total reserved
-      setWhitelist((prevWhitelist) => {
-        const existingEntry = prevWhitelist.find(
-          (entry) => entry.address === walletAddress
-        );
-        if (existingEntry) {
-          return prevWhitelist.map((entry) =>
-            entry.address === walletAddress
-              ? { ...entry, count: entry.count + selectedCount }
-              : entry
-          );
-        } else {
-          return [...prevWhitelist, { address: walletAddress, count: selectedCount }];
-        }
-      });
+      const updatedWhitelist = whitelist.map((entry) =>
+        entry.address === walletAddress
+          ? { ...entry, count: entry.count + selectedCount }
+          : entry
+      );
 
+      if (!whitelist.some((entry) => entry.address === walletAddress)) {
+        updatedWhitelist.push({ address: walletAddress, count: selectedCount });
+      }
+
+      setWhitelist(updatedWhitelist);
       setTotalReserved((prevTotal) => prevTotal + selectedCount);
+
+      // Update Firestore
+      await updateWhitelist(walletAddress, selectedCount);
 
       alert("Reservation successful!");
     } catch (error: any) {
       console.error("Transaction failed:", error);
-      const message =
-        error.reason || error.message || "Transaction failed. Please try again.";
-      alert(message);
+      alert(error.reason || error.message || "Transaction failed. Please try again.");
     } finally {
       setLoading(false);
     }
