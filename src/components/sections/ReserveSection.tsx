@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
 interface ReserveSectionProps {
@@ -7,6 +7,8 @@ interface ReserveSectionProps {
   walletAddress: string | null;
   recipientAddress: string;
 }
+
+const LOCAL_STORAGE_KEY = "reservationWhitelist";
 
 const ReserveSection = ({
   id,
@@ -18,6 +20,23 @@ const ReserveSection = ({
   const [totalReserved, setTotalReserved] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(false); // For accordion
+
+  // Load whitelist from localStorage on mount
+  useEffect(() => {
+    const savedWhitelist = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedWhitelist) {
+      const parsedWhitelist = JSON.parse(savedWhitelist);
+      setWhitelist(parsedWhitelist);
+      setTotalReserved(
+        parsedWhitelist.reduce((total: number, entry: { count: number }) => total + entry.count, 0)
+      );
+    }
+  }, []);
+
+  // Save whitelist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(whitelist));
+  }, [whitelist]);
 
   const handleReserve = async () => {
     if (!walletAddress) {
@@ -146,7 +165,7 @@ const ReserveSection = ({
               {displayedReservations.length > 0 ? (
                 displayedReservations.map((entry, index) => (
                   <li key={index} className="mb-2">
-                    {entry.address} reserved {entry.count} NFTs
+                    {entry.address} reserved {entry.count} spots
                   </li>
                 ))
               ) : (
