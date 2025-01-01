@@ -41,45 +41,52 @@ const ReserveSection = ({
       alert("Please connect your wallet to proceed.");
       return;
     }
-
+  
     if (totalReserved + selectedCount > 800) {
       alert("Reservation limit reached. Please select fewer spots.");
       return;
     }
-
+  
     setLoading(true);
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-
-      const amount = ethers.parseEther((selectedCount * 1).toString()); // 1 APE per spot
+  
+      const amount = ethers.parseEther((selectedCount * 2).toString()); // 1 APE per spot
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
       });
-
+  
       await tx.wait();
-
+  
       const updatedWhitelist = whitelist.map((entry) =>
         entry.address === walletAddress
           ? { ...entry, count: entry.count + selectedCount }
           : entry
       );
-
+  
       if (!whitelist.some((entry) => entry.address === walletAddress)) {
         updatedWhitelist.push({ address: walletAddress, count: selectedCount });
       }
-
+  
       setWhitelist(updatedWhitelist);
       setTotalReserved((prevTotal) => prevTotal + selectedCount);
-
+  
       // Update Firestore
       await updateWhitelist(walletAddress, selectedCount);
-
+  
       alert("Reservation successful!");
     } catch (error: any) {
       console.error("Transaction failed:", error);
-      alert(error.reason || error.message || "Transaction failed. Please try again.");
+  
+      if (error.code === "INSUFFICIENT_FUNDS") {
+        alert("You do not have enough funds to reserve this many spots. Please check your balance.");
+      } else if (error.code === "CALL_EXCEPTION") {
+        alert("INSUFFICIENT_FUNDS. Please ensure you have enough funds or try again later.");
+      } else {
+        alert(error.reason || error.message || "Transaction failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -99,27 +106,26 @@ const ReserveSection = ({
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="font-display text-5xl text-neonPink mb-6">
-            Reserve a Spot to Mint
+          <h2 className="font-display text-4xl text-neonPink mb-6">
+            Reserve your Whitelist Minting Position
           </h2>
 
-          <p className="text-gray-200 mb-2">
-            Reserve your Guaranteed Whitelist Spot by Sending 1 APE per Spot.
-            Max 10 per wallet.
+          <p className="text-neonCyan text-xl mb-2" style={{ color: '#00fafa' }}>
+            Agent Cost: 16 APE. Max 10 per Wallet
           </p>
+
           <p className="text-gray-200 mb-8">
-            Total spots available: <strong>{800 - totalReserved}</strong>. Each NFT will
-            receive a Personality Airdrop on next Milestone.
+            Secure your whitelist spot with a 2 APE down payment and only pay 14 on mint day.
           </p>
+          <p className="text-gray-200 mb-4">
+            Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
+          </p>
+
+                  
 
           {/* Number Selector */}
           <div className="mb-6">
-            <label
-              htmlFor="spotCount"
-              className="block text-gray-300 mb-2 font-medium"
-            >
-              Select Number of Spots
-            </label>
+
             <select
               id="spotCount"
               value={selectedCount}
@@ -149,6 +155,11 @@ const ReserveSection = ({
               ? "Full"
               : `Pay ${selectedCount} APE`}
           </button>
+
+          <p className="text-cyan-400 mb-8 mt-8">
+            Each NFT will receive a Personality Airdrop on next Milestone.
+          </p>
+
 
           {/* Whitelist Display */}
           <div className="mt-10">
