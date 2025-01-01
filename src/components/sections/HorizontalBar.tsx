@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ethers } from "ethers";
 
 interface NFTCollection {
@@ -17,6 +17,7 @@ const NFTHorizontalBar = ({
   collections: NFTCollection[];
   walletAddress: string | null;
 }) => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const [statusMessage, setStatusMessage] = useState<{
     message: string;
     color: string;
@@ -75,9 +76,9 @@ const NFTHorizontalBar = ({
   }, [walletAddress, collections]);
 
   return (
-    <div className="py-6">
+    <div ref={sectionRef} id="horizontal-bar" className="py-6">
       {/* Title */}
-      <h2 className="text-center text-white font-bold text-2xl mb-4 mt-5">
+      <h2 className="text-center text-white font-bold text-2xl mb-4 mt-12">
         Must Meet 1 Condition to Qualify
       </h2>
 

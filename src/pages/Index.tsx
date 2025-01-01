@@ -145,11 +145,10 @@ const Index = ({
               >
                 800 NFT Agents on ApeChain
               </h2>
-
               <button
                 className="btn-primary"
                 onClick={() => {
-                  const reserveSection = document.getElementById("reserve");
+                  const reserveSection = document.getElementById("horizontal-bar");
                   reserveSection?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
@@ -219,8 +218,6 @@ const Index = ({
 
         ]}
       />
-
-
 
 
       {/* Reserve Section */}
