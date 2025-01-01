@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { fetchWhitelist, updateWhitelist } from "./firebaseService";
+import { switchToApeChain } from "./chainUtils";
 
 interface ReserveSectionProps {
   id: string;
@@ -41,49 +42,54 @@ const ReserveSection = ({
       alert("Please connect your wallet to proceed.");
       return;
     }
-  
-    if (totalReserved + selectedCount > 800) {
-      alert("Reservation limit reached. Please select fewer spots.");
-      return;
-    }
-  
+
     setLoading(true);
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-  
+      const network = await provider.getNetwork();
+
+      if (network.chainId !== BigInt(33139)) {
+        await switchToApeChain(provider);
+        return;
+      }
+
+      if (totalReserved + selectedCount > 800) {
+        alert("Reservation limit reached. Please select fewer spots.");
+        return;
+      }
+
       const amount = ethers.parseEther((selectedCount * 2).toString()); // 2 APE per spot
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
       });
-  
+
       await tx.wait();
-  
+
       const updatedWhitelist = whitelist.map((entry) =>
         entry.address === walletAddress
           ? { ...entry, count: entry.count + selectedCount }
           : entry
       );
-  
+
       if (!whitelist.some((entry) => entry.address === walletAddress)) {
         updatedWhitelist.push({ address: walletAddress, count: selectedCount });
       }
-  
+
       setWhitelist(updatedWhitelist);
       setTotalReserved((prevTotal) => prevTotal + selectedCount);
-  
-      // Update Firestore
+
       await updateWhitelist(walletAddress, selectedCount);
-  
+
       alert("Reservation successful!");
     } catch (error: any) {
       console.error("Transaction failed:", error);
-  
+
       if (error.code === "INSUFFICIENT_FUNDS") {
         alert("You do not have enough funds to reserve this many spots. Please check your balance.");
       } else if (error.code === "CALL_EXCEPTION") {
-        alert("INSUFFICIENT_FUNDS. Please ensure you have enough funds or try again later.");
+        alert("Transaction failed. Please ensure you have enough funds or try again later.");
       } else {
         alert(error.reason || error.message || "Transaction failed. Please try again.");
       }
@@ -110,23 +116,20 @@ const ReserveSection = ({
             Reserve your <span style={{ color: "#39ff14" }}>Buy Now, Pay Later</span> Whitelist Position
           </h2>
 
-          <p className="text-neonCyan text-xl mb-2" style={{ color: '#00fafa' }}>
+          <p className="text-neonCyan text-xl mb-2" style={{ color: "#00fafa" }}>
             Agent Cost: 16 APE. Max 10 per Wallet
           </p>
 
           <p className="text-gray-200 mb-8">
-            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>2 APE down payment</span> and only<span style={{ color: "#39ff14" }}>  pay 14 APE on mint day</span>.
+            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>2 APE down payment</span> and only<span style={{ color: "#39ff14" }}> pay 14 APE on mint day</span>.
           </p>
 
           <p className="text-gray-200 mb-4">
             Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
           </p>
 
-                  
-
           {/* Number Selector */}
           <div className="mb-6">
-
             <select
               id="spotCount"
               value={selectedCount}
@@ -161,7 +164,6 @@ const ReserveSection = ({
             Each Agent NFT will receive a Personality NFT Airdrop on next Milestone.
           </p>
 
-
           {/* Whitelist Display */}
           <div className="mt-10">
             <h3 className="font-display text-3xl text-neonPink mb-4">
@@ -181,10 +183,7 @@ const ReserveSection = ({
 
             {/* Accordion Toggle */}
             {whitelist.length > 10 && (
-              <button
-                className="mt-4 btn-secondary"
-                onClick={toggleExpanded}
-              >
+              <button className="mt-4 btn-secondary" onClick={toggleExpanded}>
                 {expanded ? "Show Less" : "Show All"}
               </button>
             )}
