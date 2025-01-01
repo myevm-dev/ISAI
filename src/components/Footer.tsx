@@ -19,7 +19,7 @@ const Footer = () => {
                 by <span className="text-neonPink">MyEVM</span>
               </p>
             </div>
-            <p className="text-gray-400">Contributing to AI16Z's Eliza Framework</p>
+            <p className="text-gray-400">Building on AI16Z's Eliza Framework</p>
           </div>
 
           {/* Our Promise Section */}
