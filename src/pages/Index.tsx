@@ -76,6 +76,7 @@ const Index = ({
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [artworks, setArtworks] = useState(initialArtworks);
   const [apePrice, setApePrice] = useState<number | null>(null);
+  const [userQualifies, setUserQualifies] = useState(false);
 
   useEffect(() => {
     const fetchApePrice = async () => {
@@ -217,6 +218,7 @@ const Index = ({
           },
 
         ]}
+        setUserQualifies={setUserQualifies} // Pass setUserQualifies function
       />
 
 
@@ -226,6 +228,7 @@ const Index = ({
           id="reserve"
           walletAddress={walletAddress}
           recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00" // Replace with your actual recipient address
+          userQualifies={userQualifies} // Pass userQualifies state
         />
       </Suspense>
 

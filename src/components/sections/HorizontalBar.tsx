@@ -13,9 +13,11 @@ interface NFTCollection {
 const NFTHorizontalBar = ({
   collections,
   walletAddress,
+  setUserQualifies,
 }: {
   collections: NFTCollection[];
   walletAddress: string | null;
+  setUserQualifies: (qualifies: boolean) => void;
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [statusMessage, setStatusMessage] = useState<{
@@ -33,6 +35,7 @@ const NFTHorizontalBar = ({
           message: "Connect wallet to see if you qualify.",
           color: "text-cyan-400",
         });
+        setUserQualifies(false); // Set qualifies to false
         return;
       }
 
@@ -45,7 +48,7 @@ const NFTHorizontalBar = ({
             const contract = new ethers.Contract(
               collection.contractAddress,
               ["function balanceOf(address) view returns (uint256)"],
-              await signer
+              signer
             );
             const balance = await contract.balanceOf(walletAddress);
             return balance >= collection.requiredAmount;
@@ -57,11 +60,13 @@ const NFTHorizontalBar = ({
             message: "You Qualify, LFG!",
             color: "text-green-500",
           });
+          setUserQualifies(true);
         } else {
           setStatusMessage({
             message: "Not quite! Go snag some above!",
             color: "text-red-500",
           });
+          setUserQualifies(false);
         }
       } catch (error) {
         console.error("Failed to check qualifications:", error);
@@ -69,6 +74,7 @@ const NFTHorizontalBar = ({
           message: "Error checking qualifications.",
           color: "text-red-500",
         });
+        setUserQualifies(false);
       }
     };
 
