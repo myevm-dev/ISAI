@@ -52,7 +52,7 @@ const ReserveSection = ({
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
   
-      const amount = ethers.parseEther((selectedCount * 2).toString()); // 1 APE per spot
+      const amount = ethers.parseEther((selectedCount * 2).toString()); // 2 APE per spot
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
@@ -154,7 +154,7 @@ const ReserveSection = ({
               ? "Processing..."
               : totalReserved >= 800
               ? "Full"
-              : `Pay ${selectedCount} APE`}
+              : `Pay ${selectedCount * 2} APE`}
           </button>
 
           <p className="text-cyan-400 mb-8 mt-8">
