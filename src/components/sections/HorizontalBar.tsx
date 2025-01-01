@@ -12,7 +12,7 @@ const NFTHorizontalBar = ({ collections }: { collections: NFTCollection[] }) => 
     <div className="py-8">
       {/* Title */}
       <h2 className="text-center text-white font-bold text-2xl mb-4">
-        Whitelist Qualifications
+        Must Meet 1 Condition to Qualify
       </h2>
 
       {/* Horizontal Bar */}

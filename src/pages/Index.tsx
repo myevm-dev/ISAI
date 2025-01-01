@@ -191,9 +191,16 @@ const Index = ({
               description: "Must Own 1",
               link: "https://magiceden.com/collections/apechain/0xb3443b6bd585ba4118cae2bedb61c7ec4a8281df", // Link to Magic Eden
             },
+            {
+              image: "/degenlogo.png", // Ensure this file is in the public folder
+              name: "Degen",
+              description: "Must Own 3",
+              link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1", // Link to Magic Eden
+            },
           ]}
         />
       </section>
+
 
 
       {/* Reserve Section */}
