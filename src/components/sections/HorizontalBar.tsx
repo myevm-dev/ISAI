@@ -71,7 +71,7 @@ const NFTHorizontalBar = ({
       } catch (error) {
         console.error("Failed to check qualifications:", error);
         setStatusMessage({
-          message: "Error checking qualifications.",
+          message: "Error checking qualifications Make sure you are on ApeChain.",
           color: "text-red-500",
         });
         setUserQualifies(false);
