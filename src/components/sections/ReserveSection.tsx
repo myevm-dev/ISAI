@@ -52,7 +52,7 @@ const ReserveSection = ({
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
   
-      const amount = ethers.parseEther((selectedCount * 1).toString()); // 1 APE per spot
+      const amount = ethers.parseEther((selectedCount * 2).toString()); // 1 APE per spot
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
@@ -115,7 +115,7 @@ const ReserveSection = ({
           </p>
 
           <p className="text-gray-200 mb-8">
-            Secure your whitelist spot with a 1 APE down payment and only pay 15 on mint day.
+            Secure your whitelist spot with a 2 APE down payment and only pay 14 on mint day.
           </p>
           <p className="text-gray-200 mb-4">
             Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
