@@ -51,9 +51,10 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
           <button onClick={() => scrollToSection("about")} className="nav-link">
             ABOUT
           </button>
-          <button onClick={() => scrollToSection("reserve")} className="nav-link">
+          <button onClick={() => scrollToSection("horizontal-bar")} className="nav-link">
             RESERVE
           </button>
+
           <button onClick={() => scrollToSection("artworks")} className="nav-link">
             ASSETS
           </button>

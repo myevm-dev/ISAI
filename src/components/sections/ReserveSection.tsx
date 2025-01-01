@@ -107,7 +107,7 @@ const ReserveSection = ({
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-display text-4xl text-neonPink mb-6">
-            Reserve your Whitelist Minting Position
+            Reserve your <span style={{ color: "#39ff14" }}>Buy Now, Pay Later</span> Whitelist Position
           </h2>
 
           <p className="text-neonCyan text-xl mb-2" style={{ color: '#00fafa' }}>
@@ -115,8 +115,9 @@ const ReserveSection = ({
           </p>
 
           <p className="text-gray-200 mb-8">
-            Secure your whitelist spot with a 2 APE down payment and only pay 14 on mint day.
+            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>2 APE down payment</span> and only<span style={{ color: "#39ff14" }}>  pay 14 APE on mint day</span>.
           </p>
+
           <p className="text-gray-200 mb-4">
             Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
           </p>

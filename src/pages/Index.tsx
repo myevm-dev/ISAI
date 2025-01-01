@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import Roadmap from "@/components/sections/Roadmap";
+import NFTHorizontalBar from "@/components/sections/HorizontalBar";
 
 // Lazy load components
 const NFTCard = lazy(() => import("../components/NFTCard"));
@@ -173,17 +174,34 @@ const Index = ({
         </div>
       </motion.section>
 
+
+
       {/* About Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <AboutSection id="about" />
       </Suspense>
+
+      {/* Horizontal Bar */}
+      <section id="horizontal-bar" className="py-8">
+        <NFTHorizontalBar
+          collections={[
+            {
+              image: "/gslogo.png", // Ensure this file is in the public folder
+              name: "G's on Ape",
+              description: "Must Own 1",
+              link: "https://magiceden.com/collections/apechain/0xb3443b6bd585ba4118cae2bedb61c7ec4a8281df", // Link to Magic Eden
+            },
+          ]}
+        />
+      </section>
+
 
       {/* Reserve Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <ReserveSection
           id="reserve"
           walletAddress={walletAddress}
-          recipientAddress="0xC0DE00EE457D8117474286C1eD313F194aC20263" // Replace with your actual recipient address
+          recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00" // Replace with your actual recipient address
         />
       </Suspense>
 
