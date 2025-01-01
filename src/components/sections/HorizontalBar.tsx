@@ -58,7 +58,7 @@ const NFTHorizontalBar = ({
           });
         } else {
           setStatusMessage({
-            message: "Not quite! Go snag some!",
+            message: "Not quite! Go snag some above!",
             color: "text-red-500",
           });
         }
