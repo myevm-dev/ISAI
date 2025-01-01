@@ -197,6 +197,18 @@ const Index = ({
               description: "Must Own 3",
               link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1", // Link to Magic Eden
             },
+            {
+              image: "/mayclogo.png", // Ensure this file is in the public folder
+              name: "MAYC",
+              description: "Must Own 1",
+              link: "https://magiceden.io/collections/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6", // Link to Magic Eden
+            },
+            {
+              image: "/bayclogo.png", // Ensure this file is in the public folder
+              name: "BAYC",
+              description: "Must Own 1",
+              link: "https://magiceden.io/collections/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", // Link to Magic Eden
+            },
           ]}
         />
       </section>
