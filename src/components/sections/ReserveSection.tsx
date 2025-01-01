@@ -158,7 +158,7 @@ const ReserveSection = ({
           </button>
 
           <p className="text-cyan-400 mb-8 mt-8">
-            Each NFT will receive a Personality Airdrop on next Milestone.
+            Each Agent NFT will receive a Personality NFT Airdrop on next Milestone.
           </p>
 
 
