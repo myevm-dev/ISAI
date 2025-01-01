@@ -76,6 +76,7 @@ const Index = ({
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [artworks, setArtworks] = useState(initialArtworks);
   const [apePrice, setApePrice] = useState<number | null>(null);
+  const [userQualifies, setUserQualifies] = useState(false);
 
   useEffect(() => {
     const fetchApePrice = async () => {
@@ -145,11 +146,10 @@ const Index = ({
               >
                 800 NFT Agents on ApeChain
               </h2>
-
               <button
                 className="btn-primary"
                 onClick={() => {
-                  const reserveSection = document.getElementById("reserve");
+                  const reserveSection = document.getElementById("horizontal-bar");
                   reserveSection?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
@@ -181,38 +181,45 @@ const Index = ({
         <AboutSection id="about" />
       </Suspense>
 
-      {/* Horizontal Bar */}
-      <section id="horizontal-bar" className="py-8">
-        <NFTHorizontalBar
-          collections={[
-            {
-              image: "/gslogo.png", // Ensure this file is in the public folder
-              name: "G's on Ape",
-              description: "Must Own 1",
-              link: "https://magiceden.com/collections/apechain/0xb3443b6bd585ba4118cae2bedb61c7ec4a8281df", // Link to Magic Eden
-            },
-            {
-              image: "/degenlogo.png", // Ensure this file is in the public folder
-              name: "Degen",
-              description: "Must Own 3",
-              link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1", // Link to Magic Eden
-            },
-            {
-              image: "/mayclogo.png", // Ensure this file is in the public folder
-              name: "MAYC",
-              description: "Must Own 1",
-              link: "https://magiceden.io/collections/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6", // Link to Magic Eden
-            },
-            {
-              image: "/bayclogo.png", // Ensure this file is in the public folder
-              name: "BAYC",
-              description: "Must Own 1",
-              link: "https://magiceden.io/collections/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", // Link to Magic Eden
-            },
-          ]}
-        />
-      </section>
+      <NFTHorizontalBar
+        walletAddress={walletAddress}
+        collections={[
+          {
+            image: "/gslogo.png",
+            name: "G's On Ape",
+            description: "Must Own 1",
+            link: "https://magiceden.com/collections/apechain/0xb3443b6bd585ba4118cae2bedb61c7ec4a8281df",
+            contractAddress: "0xb3443B6Bd585ba4118CaE2beDb61c7EC4a8281Df",
+            requiredAmount: 1,
+          },
+          {
+            image: "/degenlogo.png",
+            name: "Degen",
+            description: "Must Own 3",
+            link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1",
+            contractAddress: "0x0e342F41e1B96532207F1Ad6D991969f4b58e5a1",
+            requiredAmount: 3,
+          },
+          {
+            image: "/mayclogo.png",
+            name: "MAYC",
+            description: "Must Own 1",
+            link: "https://magiceden.io/collections/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+            contractAddress: "0x6138773f0eFffB1B8c6A31692aAD7552985F96DD",
+            requiredAmount: 1,
+          },
+          {
+            image: "/bayclogo.png",
+            name: "BAYC",
+            description: "Must Own 1",
+            link: "https://magiceden.io/collections/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+            contractAddress: "0x344EAc8CF21d3EF42a75E4226b5779690E3B8B01",
+            requiredAmount: 1,
+          },
 
+        ]}
+        setUserQualifies={setUserQualifies} // Pass setUserQualifies function
+      />
 
 
       {/* Reserve Section */}
@@ -221,6 +228,7 @@ const Index = ({
           id="reserve"
           walletAddress={walletAddress}
           recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00" // Replace with your actual recipient address
+          userQualifies={userQualifies} // Pass userQualifies state
         />
       </Suspense>
 
