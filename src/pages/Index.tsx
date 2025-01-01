@@ -132,7 +132,7 @@ const Index = ({
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
                 Your Onchain <br />
-                NFT AI Assistant
+                AI Assistant
               </h1>
 
               <h2
@@ -143,7 +143,7 @@ const Index = ({
                     "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                Max 800 Agents on ApeChain
+                800 NFT Agents on ApeChain
               </h2>
 
               <button
