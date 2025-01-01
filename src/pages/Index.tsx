@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import Roadmap from "@/components/sections/Roadmap";
 import NFTHorizontalBar from "@/components/sections/HorizontalBar";
+import Head from 'next/head'; // Import next/head
 
 // Lazy load components
 const NFTCard = lazy(() => import("../components/NFTCard"));
@@ -114,6 +115,14 @@ const Index = ({
     <div className="min-h-screen">
       {/* Pass walletAddress and setWalletAddress to Navbar */}
       <Navbar walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
+            {/* Add Simple Analytics script in Head */}
+      <Head>
+        <script
+          data-collect-dnt="true"
+          async
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+        ></script>
+      </Head>
 
       {/* Hero Section */}
       <motion.section
