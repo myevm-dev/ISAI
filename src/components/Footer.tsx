@@ -22,13 +22,6 @@ const Footer = () => {
             <p className="text-gray-400">Building on AI16Z's Eliza Framework</p>
           </div>
 
-          {/* Our Promise Section */}
-          <div className="flex flex-col text-center">
-            <h3 className="font-display text-lg text-white mb-2">Our Promise</h3>
-            <p className="text-cyan-400">
-              We will never SELL you another collection unless the previous collection is 2.5x mint price.
-            </p>
-          </div>
 
           {/* Quick Links and Follow Us */}
           <div className="flex flex-row space-x-16 mt-8 md:mt-0">
