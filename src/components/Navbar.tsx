@@ -61,6 +61,14 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
           <button onClick={() => scrollToSection("roadmap")} className="nav-link">
             ROADMAP
           </button>
+
+          {/* Studio Demo Button */}
+          <Link to="/studio-demo">
+            <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
+              Studio Demo
+            </button>
+          </Link>
+
           {walletAddress ? (
             <button onClick={disconnectWallet} className="btn-primary">
               Disconnect
@@ -92,6 +100,14 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
                 <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
                   ROADMAP
                 </button>
+
+                {/* Studio Demo Button */}
+                <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
+                  <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
+                    Studio Demo
+                  </button>
+                </a>
+
                 {walletAddress ? (
                   <button onClick={disconnectWallet} className="btn-primary w-full text-center">
                     Disconnect
