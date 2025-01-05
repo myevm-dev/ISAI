@@ -153,7 +153,7 @@ const Index = ({
                     "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                800 NFT Agents on ApeChain
+                Limited NFT on Each Chain
               </h2>
               <button
                 className="btn-primary"

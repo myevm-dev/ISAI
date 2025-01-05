@@ -55,7 +55,7 @@ const ReserveSection = ({
         return;
       }
   
-      if (totalReserved + selectedCount > 800) {
+      if (totalReserved + selectedCount > 333) {
         alert("Reservation limit reached. Please select fewer spots.");
         return;
       }
@@ -127,15 +127,15 @@ const ReserveSection = ({
           </h2>
 
           <p className="text-neonCyan text-xl mb-2" style={{ color: "#00fafa" }}>
-            Agent Cost: 16 APE. Max 10 per Wallet
+            Agent Cost: ?? APE. Max 5 per Wallet
           </p>
 
           <p className="text-gray-200 mb-8">
-            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>2 APE down payment</span> and only<span style={{ color: "#39ff14" }}> pay 14 APE on mint day</span>.
+            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>?? APE down payment</span> and only<span style={{ color: "#39ff14" }}> pay ?? APE on mint day</span>.
           </p>
 
           <p className="text-gray-200 mb-4">
-            Total Agents available: <strong className="text-neonPink">{800 - totalReserved}</strong>.
+            Total Agents available: <strong className="text-neonPink">{333 - totalReserved}</strong>.
           </p>
 
           {/* Number Selector */}
@@ -145,7 +145,7 @@ const ReserveSection = ({
               value={selectedCount}
               onChange={(e) => setSelectedCount(parseInt(e.target.value))}
               className="bg-gray-800 text-white px-4 py-2 rounded-lg"
-              disabled={totalReserved >= 800 || !userQualifies}
+              disabled={totalReserved >= 333 || !userQualifies}
             >
               {[...Array(10)].map((_, i) => (
                 <option key={i + 1} value={i + 1}>
@@ -158,18 +158,18 @@ const ReserveSection = ({
           {/* Pay Button */}
           <button
             className={`btn-primary ${
-              !userQualifies || totalReserved >= 800 || loading
+              !userQualifies || totalReserved >= 333 || loading
                 ? "opacity-50 cursor-not-allowed"
                 : ""
             }`}
             onClick={handleReserve}
-            disabled={!userQualifies || totalReserved >= 800 || loading}
+            disabled={true} // Temporarily disable the button
           >
             {loading
               ? "Processing..."
-              : totalReserved >= 800
+              : totalReserved >= 333
               ? "Full"
-              : `Pay ${selectedCount * 2} APE`}
+              : `Pay ${selectedCount * 2}?? APE`}
           </button>
 
           <p className="text-cyan-400 mb-8 mt-8">
