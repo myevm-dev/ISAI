@@ -33,8 +33,8 @@ const SelectorSection: React.FC<SelectorSectionProps> = ({
   return (
     <div className="py-6">
       {/* Title */}
-      <h2 className="text-center text-white font-bold text-2xl mb-4 mt-12">
-        Select Your Chain
+      <h2 className="text-center text-white font-bold text-4xl mb-4 mt-12">
+        Select A Chain
       </h2>
 
       {/* Chain Selection Bar */}
