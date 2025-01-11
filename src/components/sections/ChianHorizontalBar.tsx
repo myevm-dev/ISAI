@@ -1,6 +1,6 @@
 import React from "react";
-import { chains } from "./chains";  // Import the 'chains' array
-import { Chain } from "./chains";   // Import the 'Chain' interface
+import { chains } from "./chains"; // Import the 'chains' array
+import { Chain } from "./chains"; // Import the 'Chain' interface
 
 const ChainHorizontalBar = ({
   selectedChain,
@@ -9,10 +9,58 @@ const ChainHorizontalBar = ({
   selectedChain: Chain | null; // Use 'Chain' here for a single selected chain
   setSelectedChain: (chain: Chain) => void; // 'Chain' is the type for an individual chain
 }) => {
+  // Function to switch chain in MetaMask
+  const switchChain = async (chain: Chain) => {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed.");
+      return;
+    }
+
+    try {
+      // Attempt to switch to the selected chain
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: `0x${chain.id.toString(16)}` }], // Convert chainId to hexadecimal
+      });
+    } catch (error: any) {
+      // If the chain is not added, prompt the user to add it
+      if (error.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [
+              {
+                chainId: `0x${chain.id.toString(16)}`,
+                chainName: chain.name,
+                rpcUrls: [chain.rpc],
+                nativeCurrency: {
+                  name: chain.symbol,
+                  symbol: chain.symbol,
+                  decimals: 18,
+                },
+                blockExplorerUrls: [chain.explorerUrl],
+              },
+            ],
+          });
+        } catch (addError) {
+          console.error("Failed to add chain:", addError);
+          alert("Failed to add the chain to MetaMask.");
+        }
+      } else {
+        console.error("Failed to switch chain:", error);
+        alert("Failed to switch the chain in MetaMask.");
+      }
+    }
+  };
+
+  // Function to handle chain selection
+  const handleChainSelect = async (chain: Chain) => {
+    await switchChain(chain); // Switch the chain in MetaMask
+    setSelectedChain(chain); // Update the selected chain in the state
+  };
+
   return (
     <div className="py-6">
-
-
       {/* Horizontal Bar */}
       <div
         className="grid gap-5 px-4"
@@ -20,10 +68,10 @@ const ChainHorizontalBar = ({
           gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
         }}
       >
-        {chains.map((chain) => ( // Corrected: Use 'chains' array here
+        {chains.map((chain) => (
           <div
             key={chain.id}
-            onClick={() => setSelectedChain(chain)}
+            onClick={() => handleChainSelect(chain)}
             className={`flex flex-col items-center text-center bg-gray-800 p-3 rounded-lg shadow-md cursor-pointer transition-shadow hover:shadow-lg ${
               selectedChain?.id === chain.id
                 ? "bg-[#fd01f5] text-white"
