@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NFTHorizontalBar from "@/components/sections/NFTHorizontalBar";
 import ChainHorizontalBar from "./ChianHorizontalBar";
-import { chains } from "./chains"; // Import the 'chains' array
-import { Chain } from "./chains"; // Import the 'Chain' interface
-
+import { collections } from "./collections"; // Import the collections array
+import { Chain } from "./chains"; // Import the Chain interface
 
 // Define the types for the props
 interface SelectorSectionProps {
@@ -16,23 +15,18 @@ const SelectorSection: React.FC<SelectorSectionProps> = ({
   setUserQualifies,
 }) => {
   const [selectedChain, setSelectedChain] = useState<Chain | null>(null);
-  const [collections, setCollections] = useState<any[]>([]); // Collections based on the selected chain
+  const [filteredCollections, setFilteredCollections] = useState<any[]>([]); // Collections filtered by selected chain
 
-  // Fetch collections for the selected chain
+  // Filter collections for the selected chain
   useEffect(() => {
     if (selectedChain) {
-      // Example to fetch collections based on the selected chain
-      setCollections([
-        {
-          image: "/degenlogo.png",
-          name: "Degen",
-          description: "Must Own 3",
-          link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1",
-          contractAddress: "0x0e342F41e1B96532207F1Ad6D991969f4b58e5a1",
-          requiredAmount: 3,
-        },
-        // Add more collections here depending on the chain
-      ]);
+      // Filter collections that belong to the selected chain based on chain.id
+      const collectionsForChain = collections.filter(
+        (collection) => collection.chain.id === selectedChain.id
+      );
+      setFilteredCollections(collectionsForChain);
+    } else {
+      setFilteredCollections([]); // Clear collections when no chain is selected
     }
   }, [selectedChain]);
 
@@ -50,18 +44,17 @@ const SelectorSection: React.FC<SelectorSectionProps> = ({
       />
 
       {/* Display Collections for the selected chain */}
-      {selectedChain && collections.length > 0 && (
+      {selectedChain && filteredCollections.length > 0 ? (
         <NFTHorizontalBar
           walletAddress={walletAddress}
-          collections={collections}
+          collections={filteredCollections}
           setUserQualifies={setUserQualifies}
         />
-      )}
-
-      {/* If no chain is selected, show a message */}
-      {!selectedChain && (
+      ) : (
         <div className="text-center text-gray-400 mt-6">
-          Please select a chain to view the collections.
+          {selectedChain
+            ? "No collections found for this chain."
+            : "Please select a chain to view the collections."}
         </div>
       )}
     </div>

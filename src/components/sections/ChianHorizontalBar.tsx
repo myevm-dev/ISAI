@@ -11,10 +11,7 @@ const ChainHorizontalBar = ({
 }) => {
   return (
     <div className="py-6">
-      {/* Title */}
-      <h2 className="text-center text-white font-bold text-2xl mb-4 mt-12">
-        Select Your Chain
-      </h2>
+
 
       {/* Horizontal Bar */}
       <div
