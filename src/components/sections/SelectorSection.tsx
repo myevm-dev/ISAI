@@ -6,11 +6,13 @@ import { Chain } from "./chains"; // Import the Chain interface
 
 // Define the types for the props
 interface SelectorSectionProps {
+  id?: string; // Optional id prop
   walletAddress: string | null;
   setUserQualifies: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SelectorSection: React.FC<SelectorSectionProps> = ({
+  id,
   walletAddress,
   setUserQualifies,
 }) => {
@@ -31,7 +33,7 @@ const SelectorSection: React.FC<SelectorSectionProps> = ({
   }, [selectedChain]);
 
   return (
-    <div className="py-6">
+    <div id={id} className="py-6">
       {/* Title */}
       <h2 className="text-center text-white font-bold text-4xl mb-4 mt-12">
         Select A Chain

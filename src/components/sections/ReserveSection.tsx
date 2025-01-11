@@ -123,7 +123,7 @@ const ReserveSection = ({
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-display text-4xl text-neonPink mb-6">
-            Reserve your <span style={{ color: "#39ff14" }}>Buy Now, Pay Later</span> Whitelist Position
+            Reserve your <span style={{ color: "#39ff14" }}>Whitelist Spot</span> w/ a Down Payment
           </h2>
 
           <p className="text-neonCyan text-xl mb-2" style={{ color: "#00fafa" }}>

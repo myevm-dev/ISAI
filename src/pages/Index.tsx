@@ -156,7 +156,7 @@ const Index = ({
                     "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                Limited NFT on Each Chain
+                intelligent NFTs on EVM Chains
               </h2>
               <button
                 className="btn-primary"
@@ -167,6 +167,7 @@ const Index = ({
               >
                 Reserve
               </button>
+
             </motion.div>
 
             {/* Hero Image */}
@@ -191,9 +192,12 @@ const Index = ({
         <AboutSection id="about" />
       </Suspense>
 
-      {/* Selector Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <SelectorSection walletAddress={walletAddress} setUserQualifies={setUserQualifies} />
+        <SelectorSection
+          id="horizontal-bar" // Add this ID for smooth scrolling
+          walletAddress={walletAddress}
+          setUserQualifies={setUserQualifies}
+        />
       </Suspense>
 
       {/* Reserve Section */}

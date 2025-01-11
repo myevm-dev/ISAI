@@ -55,20 +55,20 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
             RESERVE
           </button>
 
+
           <button onClick={() => scrollToSection("artworks")} className="nav-link">
             ASSETS
           </button>
           <button onClick={() => scrollToSection("roadmap")} className="nav-link">
             ROADMAP
           </button>
-          
+
           {/* Studio Demo Button */}
           <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
             <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
               Studio Demo
             </button>
           </a>
-
 
           {walletAddress ? (
             <button onClick={disconnectWallet} className="btn-primary">
@@ -87,38 +87,36 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
             <Menu className="h-6 w-6" />
           </SheetTrigger>
           <SheetContent side="right" className="bg-cardBg border-gray-800 p-0">
-            <div className="flex flex-col h-full">
-              <div className="p-6 flex flex-col space-y-6">
-                <button onClick={() => scrollToSection("about")} className="nav-link text-left text-lg">
-                  ABOUT
-                </button>
-                <button onClick={() => scrollToSection("reserve")} className="nav-link text-left text-lg">
-                  RESERVE
-                </button>
-                <button onClick={() => scrollToSection("artworks")} className="nav-link text-left text-lg">
-                  ASSETS
-                </button>
-                <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
-                  ROADMAP
-                </button>
+            <div className="p-6 flex flex-col space-y-6">
+              <button onClick={() => scrollToSection("about")} className="nav-link text-left text-lg">
+                ABOUT
+              </button>
+              <button onClick={() => scrollToSection("reserve")} className="nav-link text-left text-lg">
+                RESERVE
+              </button>
+              <button onClick={() => scrollToSection("artworks")} className="nav-link text-left text-lg">
+                ASSETS
+              </button>
+              <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
+                ROADMAP
+              </button>
 
-                {/* Studio Demo Button */}
-                <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
-                  <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
-                    Studio Demo
-                  </button>
-                </a>
+              {/* Studio Demo Button */}
+              <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
+                <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
+                  Studio Demo
+                </button>
+              </a>
 
-                {walletAddress ? (
-                  <button onClick={disconnectWallet} className="btn-primary w-full text-center">
-                    Disconnect
-                  </button>
-                ) : (
-                  <button onClick={connectWallet} className="btn-primary w-full text-center">
-                    Connect Wallet
-                  </button>
-                )}
-              </div>
+              {walletAddress ? (
+                <button onClick={disconnectWallet} className="btn-primary w-full text-center">
+                  Disconnect
+                </button>
+              ) : (
+                <button onClick={connectWallet} className="btn-primary w-full text-center">
+                  Connect Wallet
+                </button>
+              )}
             </div>
           </SheetContent>
         </Sheet>

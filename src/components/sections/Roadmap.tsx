@@ -8,7 +8,7 @@ const Roadmap: React.FC = () => {
       subtext: "AMM Liquidity",
     },
     {
-      title: "Personalities for any NFT",
+      title: "Brains for any NFT",
       subtext: "Holder Airdrop",
     },
     {
