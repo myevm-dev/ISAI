@@ -47,7 +47,7 @@ const ChainHorizontalBar = ({
       {/* Selected Chain */}
       <div className="mt-6 text-center">
         {selectedChain ? (
-          <p className="text-4xl text-green-500 font-bold">
+          <p className="text-4xl text-[#fd01f5] font-bold">
             Selected Chain: {selectedChain.name}
           </p>
         ) : (
