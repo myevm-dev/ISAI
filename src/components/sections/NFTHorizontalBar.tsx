@@ -84,8 +84,8 @@ const NFTHorizontalBar = ({
   return (
     <div ref={sectionRef} id="horizontal-bar" className="py-6">
       {/* Title */}
-      <h2 className="text-center text-white font-bold text-2xl mb-4 mt-12">
-        Must Meet 1 Condition to Qualify
+      <h2 className="text-center text-white font-bold text-4xl mb-4 mt-12">
+        Connect Wallet: Meet 1 Condition to Qualify
       </h2>
 
       {/* Horizontal Bar */}

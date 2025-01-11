@@ -33,8 +33,8 @@ export const collections: NFTCollection[] = [
     image: "/apechainlogo.png",
     name: "ApeChain Collection",
     description: "A Coming Soon Collection for ApeChain",
-    link: "https://magiceden.io/collections/apechain/",
-    contractAddress: "0x",
+    link: "https://magiceden.io/collections/apechain/0x0e342F41e1B96532207F1Ad6D991969f4b58e5a1",
+    contractAddress: "0x0e342F41e1B96532207F1Ad6D991969f4b58e5a1",
     requiredAmount: 3,
     chain: {
       name: "ApeChain",
