@@ -1,10 +1,11 @@
+
+
 import { useState, useEffect, lazy, Suspense } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
 import Roadmap from "@/components/sections/Roadmap";
-import NFTHorizontalBar from "@/components/sections/HorizontalBar";
 import Head from 'next/head'; // Import next/head
 
 // Lazy load components
@@ -13,6 +14,7 @@ const AboutSection = lazy(() => import("../components/sections/AboutSection"));
 const ReserveSection = lazy(() =>
   import("../components/sections/ReserveSection")
 );
+const SelectorSection = lazy(() => import("../components/sections/SelectorSection")); // Lazy load SelectorSection
 
 const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 
@@ -115,7 +117,8 @@ const Index = ({
     <div className="min-h-screen">
       {/* Pass walletAddress and setWalletAddress to Navbar */}
       <Navbar walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
-            {/* Add Simple Analytics script in Head */}
+      
+      {/* Add Simple Analytics script in Head */}
       <Head>
         <script
           data-collect-dnt="true"
@@ -183,53 +186,15 @@ const Index = ({
         </div>
       </motion.section>
 
-
-
       {/* About Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <AboutSection id="about" />
       </Suspense>
 
-      <NFTHorizontalBar
-        walletAddress={walletAddress}
-        collections={[
-          {
-            image: "/gslogo.png",
-            name: "G's On Ape",
-            description: "Must Own 1",
-            link: "https://magiceden.com/collections/apechain/0xb3443b6bd585ba4118cae2bedb61c7ec4a8281df",
-            contractAddress: "0xb3443B6Bd585ba4118CaE2beDb61c7EC4a8281Df",
-            requiredAmount: 1,
-          },
-          {
-            image: "/degenlogo.png",
-            name: "Degen",
-            description: "Must Own 3",
-            link: "https://magiceden.io/collections/apechain/0x0e342f41e1b96532207f1ad6d991969f4b58e5a1",
-            contractAddress: "0x0e342F41e1B96532207F1Ad6D991969f4b58e5a1",
-            requiredAmount: 3,
-          },
-          {
-            image: "/mayclogo.png",
-            name: "MAYC",
-            description: "Must Own 1",
-            link: "https://magiceden.io/collections/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6",
-            contractAddress: "0x6138773f0eFffB1B8c6A31692aAD7552985F96DD",
-            requiredAmount: 1,
-          },
-          {
-            image: "/bayclogo.png",
-            name: "BAYC",
-            description: "Must Own 1",
-            link: "https://magiceden.io/collections/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-            contractAddress: "0x344EAc8CF21d3EF42a75E4226b5779690E3B8B01",
-            requiredAmount: 1,
-          },
-
-        ]}
-        setUserQualifies={setUserQualifies} // Pass setUserQualifies function
-      />
-
+      {/* Selector Section */}
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+        <SelectorSection walletAddress={walletAddress} setUserQualifies={setUserQualifies} />
+      </Suspense>
 
       {/* Reserve Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
@@ -240,7 +205,6 @@ const Index = ({
           userQualifies={userQualifies} // Pass userQualifies state
         />
       </Suspense>
-
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">
@@ -267,9 +231,7 @@ const Index = ({
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`btn-secondary ${
-                  selectedCategory === category ? "bg-white/20" : ""
-                }`}
+                className={`btn-secondary ${selectedCategory === category ? "bg-white/20" : ""}`}
               >
                 {category}
               </button>

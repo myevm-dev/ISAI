@@ -60,7 +60,7 @@ const ReserveSection = ({
         return;
       }
   
-      const amount = ethers.parseEther((selectedCount * 2).toString()); // 2 APE per spot
+      const amount = ethers.parseEther((selectedCount * 2).toString()); 
       const tx = await signer.sendTransaction({
         to: recipientAddress,
         value: amount,
@@ -89,7 +89,7 @@ const ReserveSection = ({
   
       if (error.code === "INSUFFICIENT_FUNDS") {
         alert(
-          "You do not have enough APE to complete this reservation. Please check your balance and try again."
+          "You do not have enough ETH to complete this reservation. Please check your balance and try again."
         );
       } else if (error.code === "CALL_EXCEPTION") {
         alert(
@@ -127,11 +127,11 @@ const ReserveSection = ({
           </h2>
 
           <p className="text-neonCyan text-xl mb-2" style={{ color: "#00fafa" }}>
-            Agent Cost: ?? APE. Max 5 per Wallet
+            Agent Cost: TBD Max 5 per Wallet
           </p>
 
           <p className="text-gray-200 mb-8">
-            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>?? APE down payment</span> and only<span style={{ color: "#39ff14" }}> pay ?? APE on mint day</span>.
+            Secure your whitelist spot with a <span style={{ color: "#39ff14" }}>TBD ETH down payment</span> and only<span style={{ color: "#39ff14" }}> pay TBD ETH on mint day</span>.
           </p>
 
           <p className="text-gray-200 mb-4">
@@ -169,7 +169,7 @@ const ReserveSection = ({
               ? "Processing..."
               : totalReserved >= 333
               ? "Full"
-              : `Pay ${selectedCount * 2}?? APE`}
+              : `Pay ${selectedCount * 2}TBD ETH`}
           </button>
 
           <p className="text-cyan-400 mb-8 mt-8">
