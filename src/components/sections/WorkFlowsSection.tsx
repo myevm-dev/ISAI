@@ -15,8 +15,12 @@ const WorkflowsSection = ({ id }: { id: string }) => {
             ISAI Agent Brains for Any NFT
           </h2>
 
-          <p className="text-gray-200 mb-8">
-            Deploy a token-bound smart wallet for any NFT using the ERC-7579 Modular Smart Account standard. Equip your ISAI Core with AI personalities, Web2 plugins, Web3 skills, and custom wisdom. Create, buy, sell, or trade these components and unlock your workflows with our no-code builder.
+          <p className="text-neonGreen mb-8 text-3xl">
+            Zapier-like on and off chain workflows.
+          </p>
+
+          <p className="text-gray-200 mb-8 text-2xl">
+           Financial Empowerment plus Quality of Life <br/> through no-code plug and play components.
           </p>
 
           {/* Vertical Layout with Icons/Images */}
