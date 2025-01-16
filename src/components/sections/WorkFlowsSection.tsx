@@ -20,23 +20,23 @@ const WorkflowsSection = ({ id }: { id: string }) => {
           </p>
 
           <p className="text-gray-200 mb-8 text-2xl">
-           Financial Empowerment plus Quality of Life <br/> through no-code plug and play components.
+            Financial Empowerment plus Quality of Life <br /> through no-code plug and play components.
           </p>
 
           {/* Vertical Layout with Icons/Images */}
           <div className="space-y-12">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col md:flex-row items-center justify-between space-x-8 bg-darkBg p-8 rounded-xl"
+              className="flex flex-col md:flex-row items-center justify-center md:space-x-4 bg-darkBg p-8 rounded-xl"
             >
               <div className="flex-shrink-0">
                 <img
-                  src="/path/to/icon1.png"
+                  src="/agentcore.png" // Image from the public folder
                   alt="Minting AI Core NFT Icon"
-                  className="w-16 h-16 mb-4 mx-auto"
+                  className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-xs">
+              <div className="text-left max-w-md mb-7">
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Agent Core</h3>
                 <p className="text-gray-200 text-center">
                   Make any NFT autonomous by deploying a token-bound modular smart account wallet utilizing the ERC-7579 standard.
@@ -46,16 +46,16 @@ const WorkflowsSection = ({ id }: { id: string }) => {
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col md:flex-row items-center justify-between space-x-8 bg-darkBg p-8 rounded-xl"
+              className="flex flex-col md:flex-row items-center justify-center md:space-x-4 bg-darkBg p-8 rounded-xl"
             >
               <div className="flex-shrink-0">
                 <img
-                  src="/path/to/icon3.png"
+                  src="/equipagent.png" // Image from the public folder
                   alt="Royalty & Sharing Icon"
-                  className="w-16 h-16 mb-4 mx-auto"
+                  className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-xs">
+              <div className="text-left max-w-md mb-7">
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Equip Your Agent</h3>
                 <p className="text-gray-200 text-center">
                   Buy, sell, and create collectible no-code modular Web2 plugins, Web3 skills, uploadable wisdom, & custom personas.
@@ -65,16 +65,16 @@ const WorkflowsSection = ({ id }: { id: string }) => {
 
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col md:flex-row items-center justify-between space-x-8 bg-darkBg p-8 rounded-xl"
+              className="flex flex-col md:flex-row items-center justify-center md:space-x-4 bg-darkBg p-8 rounded-xl"
             >
               <div className="flex-shrink-0">
                 <img
-                  src="/path/to/icon3.png"
+                  src="/buildingblocks.png" // Image from the public folder
                   alt="Royalty & Sharing Icon"
-                  className="w-16 h-16 mb-4 mx-auto"
+                  className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-xs">
+              <div className="text-left max-w-md mb-7">
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Earn and Level Up</h3>
                 <p className="text-gray-200 text-center">
                   Register modular building blocks. Earn royalties as others use your components to create custom workflows & strategies.
