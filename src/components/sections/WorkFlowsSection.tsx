@@ -36,7 +36,7 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                   className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-md mb-7">
+              <div className="text-left max-w-lg mb-7"> {/* Adjusted max width */}
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Agent Core</h3>
                 <p className="text-gray-200 text-center">
                   Make any NFT autonomous by deploying a token-bound modular smart account wallet utilizing the ERC-7579 standard.
@@ -55,7 +55,7 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                   className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-md mb-7">
+              <div className="text-left max-w-lg mb-7"> {/* Adjusted max width */}
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Equip Your Agent</h3>
                 <p className="text-gray-200 text-center">
                   Buy, sell, and create collectible no-code modular Web2 plugins, Web3 skills, uploadable wisdom, & custom personas.
@@ -74,7 +74,7 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                   className="w-40 h-40 mb-4 mx-auto"
                 />
               </div>
-              <div className="text-left max-w-md mb-7">
+              <div className="text-left max-w-lg mb-7"> {/* Adjusted max width */}
                 <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Earn and Level Up</h3>
                 <p className="text-gray-200 text-center">
                   Register modular building blocks. Earn royalties as others use your components to create custom workflows & strategies.
