@@ -5,15 +5,16 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
-import Roadmap from "@/components/sections/Roadmap";
+//import Roadmap from "@/components/sections/Roadmap";
 import Head from 'next/head'; // Import next/head
+import WorkflowsSection from "@/components/sections/WorkFlowsSection";
 
 // Lazy load components
 const NFTCard = lazy(() => import("../components/NFTCard"));
 const AboutSection = lazy(() => import("../components/sections/AboutSection"));
-const ReserveSection = lazy(() =>
-  import("../components/sections/ReserveSection")
-);
+// const ReserveSection = lazy(() =>
+//   import("../components/sections/ReserveSection")
+// ); // Commented out ReserveSection
 const SelectorSection = lazy(() => import("../components/sections/SelectorSection")); // Lazy load SelectorSection
 
 const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
@@ -151,12 +152,12 @@ const Index = ({
               <h2
                 className="font-display text-2xl sm:text-3xl md:text-4xl leading-tight mb-4"
                 style={{
-                  color: "#CC6CE7", // Neon color
+                  color: "#F91AD4", // Neon color
                   textShadow:
                     "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                intelligent NFTs on EVM Chains
+                No Code Hybrid <br/> On and Off Chain Workflows
               </h2>
               <button
                 className="btn-primary"
@@ -165,7 +166,7 @@ const Index = ({
                   reserveSection?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Reserve
+                Preview ISAI Studio
               </button>
 
             </motion.div>
@@ -187,28 +188,29 @@ const Index = ({
         </div>
       </motion.section>
 
-      {/* About Section */}
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <AboutSection id="about" />
-      </Suspense>
 
+
+      {/* 
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <SelectorSection
           id="horizontal-bar" // Add this ID for smooth scrolling
           walletAddress={walletAddress}
           setUserQualifies={setUserQualifies}
         />
-      </Suspense>
+      </Suspense> 
+      */}
+
 
       {/* Reserve Section */}
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+{/* Reserve Section - Commented Out */}
+      {/* <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <ReserveSection
           id="reserve"
           walletAddress={walletAddress}
-          recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00" // Replace with your actual recipient address
-          userQualifies={userQualifies} // Pass userQualifies state
+          recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00"
+          userQualifies={userQualifies}
         />
-      </Suspense>
+      </Suspense> */}
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">
@@ -276,10 +278,15 @@ const Index = ({
         </div>
       </section>
 
-      {/* Roadmap Section */}
-      <section id="roadmap" className="py-20 px-4">
+            {/* About Section */}
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
+        <AboutSection id="about" />
+      </Suspense>
+
+      {/* Roadmap Section - Commented Out */}
+      {/* <section id="roadmap" className="py-20 px-4">
         <Roadmap />
-      </section>
+      </section> */}
 
       <Footer />
     </div>

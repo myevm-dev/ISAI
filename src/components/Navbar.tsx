@@ -51,22 +51,20 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
           <button onClick={() => scrollToSection("about")} className="nav-link">
             ABOUT
           </button>
-          <button onClick={() => scrollToSection("horizontal-bar")} className="nav-link">
+          {/* <button onClick={() => scrollToSection("horizontal-bar")} className="nav-link">
             RESERVE
-          </button>
-
-
+          </button> */}
           <button onClick={() => scrollToSection("artworks")} className="nav-link">
             ASSETS
           </button>
-          <button onClick={() => scrollToSection("roadmap")} className="nav-link">
+          {/* <button onClick={() => scrollToSection("roadmap")} className="nav-link">
             ROADMAP
-          </button>
+          </button> */}
 
           {/* Studio Demo Button */}
           <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
             <button className="px-4 py-2 rounded-lg border-2 border-neonPink bg-black text-white hover:bg-gray-800 transition-all">
-              Studio Demo
+              Studio Preview
             </button>
           </a>
 
@@ -91,15 +89,15 @@ const Navbar = ({ setWalletAddress, walletAddress }: { setWalletAddress: (addres
               <button onClick={() => scrollToSection("about")} className="nav-link text-left text-lg">
                 ABOUT
               </button>
-              <button onClick={() => scrollToSection("reserve")} className="nav-link text-left text-lg">
+              {/* <button onClick={() => scrollToSection("reserve")} className="nav-link text-left text-lg">
                 RESERVE
-              </button>
+              </button> */}
               <button onClick={() => scrollToSection("artworks")} className="nav-link text-left text-lg">
                 ASSETS
               </button>
-              <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
+              {/* <button onClick={() => scrollToSection("roadmap")} className="nav-link text-left text-lg">
                 ROADMAP
-              </button>
+              </button> */}
 
               {/* Studio Demo Button */}
               <a href="https://studio.myevm.network" target="_blank" rel="noopener noreferrer">
