@@ -1,21 +1,15 @@
-
-
 import { useState, useEffect, lazy, Suspense } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer";
-//import Roadmap from "@/components/sections/Roadmap";
 import Head from 'next/head'; // Import next/head
-import WorkflowsSection from "@/components/sections/WorkFlowsSection";
+import WorkflowsSection from "@/components/sections/WorkFlowsSection";// Import WorkflowsSection
 
 // Lazy load components
 const NFTCard = lazy(() => import("../components/NFTCard"));
 const AboutSection = lazy(() => import("../components/sections/AboutSection"));
-// const ReserveSection = lazy(() =>
-//   import("../components/sections/ReserveSection")
-// ); // Commented out ReserveSection
-const SelectorSection = lazy(() => import("../components/sections/SelectorSection")); // Lazy load SelectorSection
+const SelectorSection = lazy(() => import("../components/sections/SelectorSection"));
 
 const categories = ["ALL", "AGENTS", "SKILLS", "PLUGINS", "PERSONALITIES"];
 
@@ -145,7 +139,7 @@ const Index = ({
               className="relative z-10"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-tight mb-6">
-                Your Onchain <br />
+                Your No-Code <br />
                 AI Assistant
               </h1>
 
@@ -157,13 +151,12 @@ const Index = ({
                     "0 0 5pxrgb(255, 0, 217), 0 0 10pxrgb(255, 0, 242), 0 0 20pxrgb(160, 9, 142), 0 0 30pxrgb(214, 208, 214)",
                 }}
               >
-                No Code Hybrid <br/> On and Off Chain Workflows
+                Build Custom Hybrid <br /> On & Off Chain Workflows
               </h2>
               <button
                 className="btn-primary"
                 onClick={() => {
-                  const reserveSection = document.getElementById("horizontal-bar");
-                  reserveSection?.scrollIntoView({ behavior: "smooth" });
+                  window.location.href = "https://studio.myevm.network"; // Redirect to the link
                 }}
               >
                 Preview ISAI Studio
@@ -188,29 +181,8 @@ const Index = ({
         </div>
       </motion.section>
 
-
-
-      {/* 
-      <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <SelectorSection
-          id="horizontal-bar" // Add this ID for smooth scrolling
-          walletAddress={walletAddress}
-          setUserQualifies={setUserQualifies}
-        />
-      </Suspense> 
-      */}
-
-
-      {/* Reserve Section */}
-{/* Reserve Section - Commented Out */}
-      {/* <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
-        <ReserveSection
-          id="reserve"
-          walletAddress={walletAddress}
-          recipientAddress="0xb85ACdb74E60104314a8933915a63Db20ba1Dd00"
-          userQualifies={userQualifies}
-        />
-      </Suspense> */}
+      {/* Workflows Section */}
+      <WorkflowsSection id="workflows" />
 
       {/* Gallery Section */}
       <section className="py-20 px-4" id="artworks">
@@ -278,15 +250,10 @@ const Index = ({
         </div>
       </section>
 
-            {/* About Section */}
+      {/* About Section */}
       <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading...</div>}>
         <AboutSection id="about" />
       </Suspense>
-
-      {/* Roadmap Section - Commented Out */}
-      {/* <section id="roadmap" className="py-20 px-4">
-        <Roadmap />
-      </section> */}
 
       <Footer />
     </div>
