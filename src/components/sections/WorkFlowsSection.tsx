@@ -12,13 +12,12 @@ const WorkflowsSection = ({ id }: { id: string }) => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-display text-5xl text-neonPink mb-6">
-            ISAI Agent Brains for any NFT
+            ISAI Agent Brains for Any NFT
           </h2>
 
           <p className="text-gray-200 mb-8">
             Deploy a token-bound smart wallet for any NFT using the ERC-7579 Modular Smart Account standard. Equip your ISAI Core with AI personalities, Web2 plugins, Web3 skills, and custom wisdom. Create, buy, sell, or trade these components and unlock your workflows with our no-code builder.
           </p>
-
 
           {/* Vertical Layout with Icons/Images */}
           <div className="space-y-12">
@@ -34,9 +33,9 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                 />
               </div>
               <div className="text-left max-w-xs">
-                <h3 className="font-display text-3xl text-neonGreen mb-2">Agent Core </h3>
-                <p className="text-gray-200">
-                 Make any NFT autonomous by deploying a tokenbound modular smart account wallet utilizing the ERC-7579 standard.
+                <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Agent Core</h3>
+                <p className="text-gray-200 text-center">
+                  Make any NFT autonomous by deploying a token-bound modular smart account wallet utilizing the ERC-7579 standard.
                 </p>
               </div>
             </motion.div>
@@ -53,9 +52,9 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                 />
               </div>
               <div className="text-left max-w-xs">
-                <h3 className="font-display text-3xl text-neonGreen mb-2">Equip your Agent</h3>
-                <p className="text-gray-200">
-                  Buy, Sell, and Create collectable no-code modular web2 Plugins, Web3 Skills, uploadable wisdom, and custom personalities.
+                <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Equip Your Agent</h3>
+                <p className="text-gray-200 text-center">
+                  Buy, sell, and create collectible no-code modular Web2 plugins, Web3 skills, uploadable wisdom, & custom personas.
                 </p>
               </div>
             </motion.div>
@@ -72,9 +71,10 @@ const WorkflowsSection = ({ id }: { id: string }) => {
                 />
               </div>
               <div className="text-left max-w-xs">
-                <h3 className="font-display text-3xl text-neonGreen mb-2">Earn and Level Up</h3>
-                <p className="text-gray-200">
-                  Register and share modular building blocks. Earn royalties as others use your components to create custom workflows and strategies.                </p>
+                <h3 className="font-display text-3xl text-neonGreen mb-2 text-center">Earn and Level Up</h3>
+                <p className="text-gray-200 text-center">
+                  Register modular building blocks. Earn royalties as others use your components to create custom workflows & strategies.
+                </p>
               </div>
             </motion.div>
           </div>
