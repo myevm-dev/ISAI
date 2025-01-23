@@ -17,25 +17,25 @@ const initialArtworks = [
   {
     image: "/agent1.png",
     title: "ISAI Agent1",
-    price: { ape: 16, usd: null },
+    price: { ape: 36, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent2.png",
     title: "ISAI Agent2",
-    price: { ape: 16, usd: null },
+    price: { ape: 36, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent3.png",
     title: "ISAI Agent3",
-    price: { ape: 16, usd: null },
+    price: { ape: 36, usd: null },
     category: "AGENTS",
   },
   {
     image: "/agent4.png",
     title: "ISAI Agent4",
-    price: { ape: 16, usd: null },
+    price: { ape: 36, usd: null },
     category: "AGENTS",
   },
   {
